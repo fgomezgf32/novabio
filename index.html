@@ -3,151 +3,228 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nova Bio | Train on Biology</title>
-    <!-- Tailwind CSS - Standard CDN -->
+    <title>Nova Bio | Molecular Autoregulation</title>
+    <!-- Tailwind CSS - High Speed CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #ffffff; margin: 0; scroll-behavior: smooth; }
-        @keyframes pulse-red {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.4; }
-        }
-        .animate-pulse-red { animation: pulse-red 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
-        .fade-transition { transition: opacity 0.3s ease, transform 0.3s ease; }
-        .fade-out { opacity: 0; transform: translateY(10px); }
+        body { font-family: 'Inter', sans-serif; background-color: #ffffff; color: #18181b; scroll-behavior: smooth; overflow-x: hidden; }
+        .text-red-primary { color: #E11D48; }
+        .bg-red-primary { background-color: #E11D48; }
+        .border-red-primary { border-color: #E11D48; }
+        
+        @keyframes pulse-red { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.1); } }
+        .animate-pulse-red { animation: pulse-red 2s infinite; }
+        
+        .fade-transition { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .fade-out { opacity: 0; transform: translateY(15px); }
         .fade-in { opacity: 1; transform: translateY(0); }
-        button, input { font-family: 'Inter', sans-serif; }
+
+        .glass-card { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px); border: 1px solid rgba(225, 29, 72, 0.1); }
+        .shadow-soft { box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.05); }
+        .shadow-red-glow { box-shadow: 0 10px 30px -5px rgba(225, 29, 72, 0.3); }
+
+        .diagonal-bg { clip-path: polygon(0 0, 100% 5%, 100% 95%, 0 100%); }
     </style>
 </head>
-<body class="bg-white selection:bg-red-600/10">
+<body class="bg-white">
 
     <!-- Navigation -->
-    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 py-8 bg-transparent">
+    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-500 py-6">
         <div class="container mx-auto px-6 flex justify-between items-center">
-            <div class="flex items-center gap-3">
-                <div class="w-8 h-8 rounded-full border-2 border-red-600 flex items-center justify-center shadow-md shadow-red-100">
-                    <div class="w-2 h-2 rounded-full bg-red-600 animate-pulse-red"></div>
+            <div class="flex items-center gap-3 group cursor-pointer">
+                <div class="w-10 h-10 rounded-full border-2 border-red-600 flex items-center justify-center shadow-lg shadow-red-100">
+                    <div class="w-2.5 h-2.5 rounded-full bg-red-600 animate-pulse-red"></div>
                 </div>
-                <span class="text-2xl font-black tracking-tighter uppercase italic" style="font-style: italic">Nova<span class="text-red-600">Bio</span></span>
+                <span class="text-2xl font-black tracking-tighter uppercase italic">Nova<span class="text-red-600">Bio</span></span>
             </div>
-            <div class="hidden md:flex items-center gap-10 text-[10px] font-black uppercase tracking-[0.2em] text-zinc-400">
-                <a href="#hardware" class="hover:text-red-600 transition-colors">Hardware</a>
-                <a href="#app" class="hover:text-red-600 transition-colors">Interface</a>
+            <div class="hidden md:flex items-center gap-10 text-[11px] font-bold uppercase tracking-[0.2em] text-zinc-400">
+                <a href="#science" class="hover:text-red-600 transition-colors">The Science</a>
+                <a href="#hardware" class="hover:text-red-600 transition-colors">Ecosystem</a>
                 <a href="#waitlist" class="hover:text-red-600 transition-colors">Join Alpha</a>
-                <button class="px-8 py-2.5 rounded-full border-2 border-red-600 text-red-600 font-black hover:bg-red-600 hover:text-white transition-all">Pre-Order</button>
+                <button class="px-8 py-2.5 rounded-full bg-zinc-900 text-white font-black hover:bg-red-600 transition-all shadow-lg">Pre-Order</button>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="relative pt-32 pb-20 md:pt-56 md:pb-48 text-center bg-[radial-gradient(#f1f1f1_1px,transparent_1px)] [background-size:40px_40px]">
-        <div class="container mx-auto px-6 relative z-10">
-            <!-- Mode Toggle -->
-            <div class="flex items-center justify-center mb-16">
-                <div class="bg-zinc-100 rounded-full p-1.5 border border-zinc-200 flex items-center shadow-inner">
-                    <button id="toggle-lift" onclick="setMode('lift')" class="px-12 py-3.5 rounded-full text-[11px] font-black uppercase tracking-[0.2em] transition-all duration-500 bg-red-600 text-white shadow-xl shadow-red-200">Force (LIFT)</button>
-                    <button id="toggle-run" onclick="setMode('run')" class="px-12 py-3.5 rounded-full text-[11px] font-black uppercase tracking-[0.2em] transition-all duration-500 text-zinc-500 hover:text-zinc-800">Flow (RUN)</button>
-                </div>
+    <section class="relative pt-40 pb-24 md:pt-64 md:pb-48 text-center px-4 overflow-hidden bg-[radial-gradient(#f87171_0.5px,transparent_0.5px)] [background-size:32px_32px] opacity-[0.98]">
+        <div class="container mx-auto relative z-10">
+            <div class="inline-flex items-center gap-2 bg-red-50 text-red-600 px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-[0.2em] mb-10 border border-red-100">
+                <span class="relative flex h-2 w-2">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-2 w-2 bg-red-600"></span>
+                </span>
+                Molecular Performance Shield
             </div>
 
-            <h1 id="headline" class="text-5xl md:text-[8.5rem] font-black tracking-tighter mb-10 leading-[0.85] uppercase italic text-zinc-900 fade-transition" style="font-style: italic">
-                Objective Intensity. <span class="text-red-600 block">Absolute Recovery.</span>
+            <h1 class="text-6xl md:text-[10rem] font-black tracking-tighter mb-8 leading-[0.8] uppercase italic text-zinc-900">
+                Data is <span class="text-red-600 block md:inline">Molecular.</span>
             </h1>
-            <p id="subheadline" class="max-w-3xl mx-auto text-lg md:text-2xl text-zinc-500 mb-14 font-medium tracking-tight leading-relaxed fade-transition">
-                Stop training on 'feel.' Use real-time ammonia and cortisol tracking to optimize every set and preserve lean mass.
+            
+            <p class="max-w-3xl mx-auto text-lg md:text-2xl text-zinc-500 mb-16 font-medium leading-relaxed tracking-tight">
+                Heart rate tells you where you are. <br class="hidden md:block">
+                <span class="text-zinc-900 font-bold underline decoration-red-600 decoration-4 underline-offset-8">Nova tells you how much is left in the tank.</span>
             </p>
 
             <div class="flex flex-col md:flex-row items-center justify-center gap-6">
-                <a href="#waitlist" class="w-full md:w-auto px-16 py-7 rounded-full text-white font-black uppercase tracking-widest bg-red-600 hover:bg-red-700 transition-all shadow-2xl shadow-red-200 transform hover:-translate-y-1 text-center">Join Waitlist</a>
-                <a href="#hardware" class="w-full md:w-auto px-16 py-7 rounded-full border-2 border-zinc-900 text-zinc-900 font-black uppercase tracking-widest hover:bg-zinc-900 hover:text-white transition-all transform hover:-translate-y-1 text-center">Hardware</a>
+                <a href="#waitlist" class="w-full md:w-auto px-16 py-8 rounded-full bg-red-600 text-white font-black uppercase tracking-widest hover:bg-zinc-900 transition-all shadow-red-glow transform hover:-translate-y-1">Initialize Access</a>
+                <a href="#science" class="w-full md:w-auto px-16 py-8 rounded-full border-2 border-zinc-900 text-zinc-900 font-black uppercase tracking-widest hover:bg-zinc-900 hover:text-white transition-all transform hover:-translate-y-1 text-center">The Lab Logic</a>
             </div>
         </div>
     </section>
 
-    <!-- Hardware -->
-    <section id="hardware" class="py-32 bg-zinc-50 border-y border-zinc-100">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="text-5xl md:text-7xl font-black mb-24 italic uppercase tracking-tighter" style="font-style: italic">Modular <span class="text-red-600 underline decoration-8 underline-offset-10">Ecosystem</span>.</h2>
-            <div class="grid lg:grid-cols-2 gap-16 max-w-6xl mx-auto">
-                <div class="bg-white border border-zinc-100 p-16 rounded-[3rem] shadow-2xl shadow-zinc-200/50 flex flex-col items-center group transition-all hover:shadow-red-100/50">
-                    <div id="patch-svg-container" class="mb-12"></div>
-                    <h3 class="text-4xl font-black mb-5 italic uppercase tracking-tight" style="font-style: italic">The Bicep Patch</h3>
-                    <p class="text-zinc-500 text-base max-w-xs font-medium">A circular microfluidic sticker with an integrated LED ring.</p>
-                </div>
-                <div class="bg-white border border-zinc-100 p-16 rounded-[3rem] shadow-2xl shadow-zinc-200/50 flex flex-col items-center group transition-all hover:shadow-red-200/30">
-                    <div id="clip-svg-container" class="mb-12"></div>
-                    <h3 class="text-4xl font-black mb-5 italic uppercase tracking-tight" style="font-style: italic">The Nova Clip</h3>
-                    <p class="text-zinc-500 text-base max-w-xs font-medium">Tactical housing for the Core. Snap-in for non-adhesive monitoring.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- App Interface -->
-    <section id="app" class="py-32">
+    <!-- Deep Science / Autoregulation -->
+    <section id="science" class="py-32 bg-zinc-900 text-white diagonal-bg">
         <div class="container mx-auto px-6">
-            <div class="flex flex-col lg:flex-row items-center gap-24">
-                <div class="lg:w-1/2">
-                    <h2 class="text-6xl md:text-8xl font-black italic uppercase leading-[0.9] mb-12 tracking-tighter text-zinc-900" style="font-style: italic">Data is noise. <br/><span class="text-red-600">Advice is power.</span></h2>
-                    <div id="feature-list" class="grid gap-10"></div>
+            <div class="text-center mb-24">
+                <h2 class="text-5xl md:text-7xl font-black italic uppercase tracking-tighter mb-6">Autoregulation <br><span class="text-red-600">Reinvented.</span></h2>
+                <p class="max-w-2xl mx-auto text-zinc-400 text-lg">We moved the lab from the clinic to your skin. Standard wearables react to your body's stress. Nova predicts it.</p>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-12">
+                <div class="p-10 bg-white/5 border border-white/10 rounded-[3rem] hover:border-red-600/50 transition-all">
+                    <div class="w-12 h-12 rounded-xl bg-red-600 flex items-center justify-center mb-8 shadow-lg shadow-red-600/20">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 3.33-1 4.5s3.24 0.5 4.5-1l10-10L14 6Z"/><path d="m9 2 5 2 4 11 4 3"/></svg>
+                    </div>
+                    <h3 class="font-black uppercase tracking-widest text-sm mb-4">Wicking Microfluidics</h3>
+                    <p class="text-zinc-500 text-sm leading-relaxed">Sweat is wicked into hair-thin channels using capillary action. No pumps, no batteries—just physics capturing your metabolic exhaust at a molecular level.</p>
                 </div>
-                <div class="lg:w-1/2">
-                    <div class="space-y-6 max-w-md mx-auto">
-                        <div class="bg-red-600 p-10 rounded-[2.5rem] shadow-2xl shadow-red-200">
-                            <p id="alert-high" class="text-3xl font-black italic uppercase text-white leading-tight"></p>
+                <div class="p-10 bg-white/5 border border-white/10 rounded-[3rem] hover:border-red-600/50 transition-all">
+                    <div class="w-12 h-12 rounded-xl bg-red-600 flex items-center justify-center mb-8 shadow-lg shadow-red-600/20">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/></svg>
+                    </div>
+                    <h3 class="font-black uppercase tracking-widest text-sm mb-4">Catabolic Safeguard</h3>
+                    <p class="text-zinc-500 text-sm leading-relaxed">By tracking Ammonia concentration, Nova detects the exact moment your body shifts from burning glycogen to breaking down muscle protein for fuel.</p>
+                </div>
+                <div class="p-10 bg-white/5 border border-white/10 rounded-[3rem] hover:border-red-600/50 transition-all">
+                    <div class="w-12 h-12 rounded-xl bg-red-600 flex items-center justify-center mb-8 shadow-lg shadow-red-600/20">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a7 7 0 1 0 10 10"/></svg>
+                    </div>
+                    <h3 class="font-black uppercase tracking-widest text-sm mb-4">Electrochemical Sensing</h3>
+                    <p class="text-zinc-500 text-sm leading-relaxed">Our sensors use gold-plated enzymatic electrodes to measure Glucose and Lactate without the noise of optical sensors, giving you clinic-grade accuracy intra-workout.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Force vs Flow Selector -->
+    <section class="py-32 bg-white px-6">
+        <div class="container mx-auto">
+            <div class="text-center mb-20">
+                <h2 class="text-5xl md:text-7xl font-black italic uppercase tracking-tighter mb-6">Master Your <span class="text-red-600">Physiology</span>.</h2>
+                <div class="flex items-center justify-center">
+                    <div class="bg-zinc-100 rounded-full p-1.5 border border-zinc-200 flex items-center shadow-inner">
+                        <button id="toggle-lift" onclick="setMode('lift')" class="px-12 py-4 rounded-full text-[11px] font-black uppercase tracking-[0.2em] transition-all duration-500 bg-red-600 text-white shadow-xl shadow-red-200">Force (Lifting)</button>
+                        <button id="toggle-run" onclick="setMode('run')" class="px-12 py-4 rounded-full text-[11px] font-black uppercase tracking-[0.2em] transition-all duration-500 text-zinc-500 hover:text-zinc-800">Flow (Running)</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto" id="dynamic-features">
+                <!-- Injected via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Hardware Ecosystem (Tricep Focus) -->
+    <section id="hardware" class="py-32 bg-zinc-50 border-y border-zinc-100 overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-20 items-center">
+                <div class="relative flex justify-center">
+                    <div class="absolute inset-0 bg-red-600 blur-[120px] opacity-10 scale-150"></div>
+                    <div id="patch-svg-container" class="relative z-10 transition-all duration-1000 transform hover:scale-105">
+                        <!-- SVG injected via JS with LED state -->
+                    </div>
+                </div>
+                <div>
+                    <div class="inline-flex items-center gap-2 text-red-600 text-[10px] font-black uppercase tracking-[0.3em] mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+                        Status: Biometrically Active
+                    </div>
+                    <h2 class="text-5xl md:text-7xl font-black italic uppercase tracking-tighter mb-8 leading-none">The <br><span class="text-red-600">Tricep Patch.</span></h2>
+                    <p class="text-zinc-500 text-xl font-medium leading-relaxed mb-10">
+                        Why the tricep? It is the optimal high-contact surface for continuous sweat collection and close proximity to the brachial nerve pathway. 
+                    </p>
+                    <div class="space-y-6">
+                        <div class="flex gap-4 items-center p-6 bg-white rounded-3xl border border-zinc-200 shadow-sm">
+                            <div class="w-3 h-3 rounded-full bg-zinc-200 border-2 border-zinc-300 shadow-[0_0_10px_rgba(0,0,0,0.1)]"></div>
+                            <p class="text-xs font-bold uppercase tracking-widest text-zinc-900">Steady State: <span class="text-zinc-400">Biological Homeostasis</span></p>
                         </div>
-                        <div class="bg-white border border-zinc-100 p-10 rounded-[2.5rem] shadow-2xl shadow-zinc-200">
-                            <p id="alert-low" class="text-3xl font-black italic uppercase text-zinc-900 leading-tight"></p>
+                        <div class="flex gap-4 items-center p-6 bg-white rounded-3xl border border-red-100 shadow-md">
+                            <div class="w-3 h-3 rounded-full bg-red-600 animate-pulse-red shadow-[0_0_15px_rgba(225,29,72,0.8)]"></div>
+                            <p class="text-xs font-bold uppercase tracking-widest text-red-600">Active Alert: <span class="text-red-400 italic">Catabolic Spike Detected</span></p>
                         </div>
+                        <p class="text-zinc-400 text-sm italic font-medium pt-4">Integrated 360° LED ring provides immediate visual feedback mid-set—no phone required.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Waitlist -->
-    <section id="waitlist" class="py-32 bg-white relative overflow-hidden">
-        <div class="container mx-auto px-6 max-w-4xl relative z-10">
-            <div class="bg-zinc-50 border border-zinc-100 rounded-[4rem] p-12 md:p-20 shadow-2xl shadow-zinc-200 text-center">
-                <h2 class="text-5xl md:text-7xl font-black italic uppercase mb-6 tracking-tighter" style="font-style: italic">Join the <span class="text-red-600">Alpha</span>.</h2>
-                <div id="form-container">
-                    <form id="signup-form" class="space-y-6 mt-12 text-left">
-                        <div class="grid md:grid-cols-2 gap-6">
-                            <div class="space-y-2">
-                                <label class="text-[10px] font-black uppercase tracking-widest text-zinc-400 ml-4">Full Name</label>
-                                <input required type="text" id="form-name" placeholder="E.G. ALEX RIVERA" class="w-full bg-white border border-zinc-200 px-8 py-5 rounded-full text-zinc-900 font-bold uppercase tracking-widest focus:border-red-600 focus:outline-none transition-all shadow-sm" />
-                            </div>
-                            <div class="space-y-2">
-                                <label class="text-[10px] font-black uppercase tracking-widest text-zinc-400 ml-4">Email Address</label>
-                                <input required type="email" id="form-email" placeholder="ALEX@PERFORMANCE.TECH" class="w-full bg-white border border-zinc-200 px-8 py-5 rounded-full text-zinc-900 font-bold uppercase tracking-widest focus:border-red-600 focus:outline-none transition-all shadow-sm" />
-                            </div>
-                        </div>
-                        <button type="submit" id="submit-btn" class="w-full py-8 rounded-full bg-red-600 text-white font-black uppercase tracking-[0.3em] text-xl hover:bg-zinc-900 transition-all shadow-xl shadow-red-200 flex items-center justify-center gap-4">INITIALIZE ACCESS</button>
-                    </form>
+    <!-- Tactical Clip -->
+    <section class="py-24 bg-white px-6">
+        <div class="container mx-auto max-w-5xl">
+            <div class="bg-zinc-900 rounded-[4rem] p-12 md:p-20 flex flex-col md:flex-row items-center gap-16 shadow-2xl">
+                <div id="clip-svg-container" class="flex-shrink-0"></div>
+                <div class="text-white">
+                    <h3 class="text-4xl font-black italic uppercase tracking-tight mb-6">The Nova Clip</h3>
+                    <p class="text-zinc-400 text-lg leading-relaxed mb-10">
+                        For athletes who prefer non-adhesive monitoring. The reusable Core pod snaps into a tactical housing that attaches to waistbands or sports bras. Perfect for hybrid training environments.
+                    </p>
+                    <div class="flex gap-4">
+                        <span class="px-6 py-2 rounded-full border border-white/20 text-[10px] font-black uppercase tracking-widest text-white hover:bg-white hover:text-black transition-all cursor-default">Precision Grade</span>
+                        <span class="px-6 py-2 rounded-full border border-white/20 text-[10px] font-black uppercase tracking-widest text-white hover:bg-white hover:text-black transition-all cursor-default">Impact Rated</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="py-24 text-center border-t border-zinc-100">
-        <div class="text-3xl font-black italic uppercase tracking-tighter mb-8" style="font-style: italic">Nova<span class="text-red-600">Bio</span></div>
-        <div class="text-[9px] font-black uppercase tracking-[0.5em] text-zinc-400">© 2026 Nova Technologies Group</div>
+    <!-- Final Signup -->
+    <section id="waitlist" class="py-48 bg-white relative overflow-hidden">
+        <div class="container mx-auto px-6 max-w-4xl relative z-10 text-center">
+            <h2 class="text-7xl md:text-[11rem] font-black italic uppercase mb-12 tracking-tighter text-zinc-900 leading-none">OWN YOUR <br><span class="text-red-600">BIOLOGY.</span></h2>
+            <p class="text-zinc-400 text-xl md:text-2xl mb-20 font-medium">Alpha Phase limited to 500 elite performers in Q4 2026. Secure your molecular rank.</p>
+            
+            <div id="form-container" class="bg-zinc-50 p-10 md:p-20 rounded-[4rem] shadow-2xl text-left border border-zinc-100">
+                <form id="signup-form" class="space-y-8">
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div class="space-y-3">
+                            <label class="text-[10px] font-black uppercase tracking-widest text-zinc-400 ml-5">Athlete Name</label>
+                            <input required type="text" id="form-name" placeholder="E.G. CHRIS BUMSTEAD" class="w-full bg-white border-2 border-zinc-100 px-10 py-6 rounded-full text-zinc-900 font-bold uppercase tracking-widest focus:border-red-600 focus:outline-none transition-all shadow-sm" />
+                        </div>
+                        <div class="space-y-3">
+                            <label class="text-[10px] font-black uppercase tracking-widest text-zinc-400 ml-5">Direct Email</label>
+                            <input required type="email" id="form-email" placeholder="CHRIS@OLYMPIA.COM" class="w-full bg-white border-2 border-zinc-100 px-10 py-6 rounded-full text-zinc-900 font-bold uppercase tracking-widest focus:border-red-600 focus:outline-none transition-all shadow-sm" />
+                        </div>
+                    </div>
+                    <button type="submit" id="submit-btn" class="w-full py-10 rounded-full bg-red-600 text-white font-black uppercase tracking-[0.4em] text-2xl hover:bg-zinc-900 transition-all shadow-red-glow flex items-center justify-center">INITIALIZE ACCESS</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-24 text-center bg-white border-t border-zinc-100">
+        <div class="text-3xl font-black italic uppercase tracking-tighter mb-8 italic">Nova<span class="text-red-600">Bio</span></div>
+        <div class="text-[10px] font-black uppercase tracking-[0.5em] text-zinc-300">© 2026 Nova Technologies Group. Molecular Autoregulation.</div>
     </footer>
 
     <script>
         const content = {
             lift: {
-                headline: 'Objective Intensity. <span class="text-red-600 block">Absolute Recovery.</span>',
-                subheadline: "Stop training on 'feel.' Use real-time ammonia and cortisol tracking to optimize every set and preserve lean mass.",
-                alerts: ["AMMONIA SPIKE: PROTEIN BREAKDOWN DETECTED. END SESSION.", "POTASSIUM STABILIZED. CONDUCTION AT 100%. START SET 4."],
-                features: [{title: "CNS Readiness", desc: "Measures Cortisol-to-DHEA via sweat before the first rep."}, {title: "Catabolic Kill-Switch", desc: "Detects rising Ammonium levels—the marker of muscle breakdown."}, {title: "Potassium Sync", desc: "Monitors K+ re-stabilization. Pings you when cells are recharged."}]
+                features: [
+                    { title: "CNS Readiness", desc: "Measures the Cortisol-to-DHEA ratio in your tricep-captured sweat. Know if your nervous system is primed for a max effort triple before the bar leaves the rack." },
+                    { title: "Ammonia Kill-Switch", desc: "Real-time sensing of metabolic ammonia spikes. Nova alerts you the moment you cross into a catabolic state, preserving lean mass by stopping 'junk volume'." },
+                    { title: "Potassium Stabilizer", desc: "Monitors the electrical re-polarization of muscle cells. We ping you when your muscle fibers have biologically recharged for peak explosive power." }
+                ]
             },
             run: {
-                headline: 'Master Your Threshold. <span class="text-red-600 block">Outrun The Wall.</span>',
-                subheadline: "Don't just track your pace; track the engine. Real-time lactate and glucose monitoring for the serious athlete.",
-                alerts: ["LACTATE THRESHOLD: 4.1 MMOL. DROP PACE BY 8S/MILE.", "GLUCOSE CRITICAL: 'THE WALL' IN 12 MINUTES. FUEL NOW."],
-                features: [{title: "Lactate Pacing", desc: "Continuous lactate monitoring. Stay 2% below threshold."}, {title: "The Wall Predictor", desc: "Tracks glucose depletion trends. Pings 12 minutes before the 'bonk'."}, {title: "Precision Hydration", desc: "Measures exact Sodium loss per hour. Prevents cramping instantly."}]
+                features: [
+                    { title: "Lactate Threshold", desc: "Continuous tricep-based monitoring. Stay within 1.5% of your aerobic ceiling to maximize oxidative efficiency and shatter endurance PRs." },
+                    { title: "The Wall Predictor", desc: "Analyzes the slope of glucose depletion in sweat. Receive a high-priority alert 12 minutes before glycogen levels reach the 'bonk' threshold." },
+                    { title: "Precision Hydration", desc: "Measures exact Sodium-to-Potassium loss per hour. We provide the exact electrolyte ratio needed to prevent cramping at mile 20." }
+                ]
             }
         };
 
@@ -155,93 +232,83 @@
 
         function setMode(mode) {
             currentMode = mode;
-            const h = document.getElementById('headline');
-            const s = document.getElementById('subheadline');
             const tl = document.getElementById('toggle-lift');
             const tr = document.getElementById('toggle-run');
+            const features = document.getElementById('dynamic-features');
 
             if (mode === 'lift') {
-                tl.className = "px-12 py-3.5 rounded-full text-[11px] font-black uppercase tracking-[0.2em] transition-all duration-500 bg-red-600 text-white shadow-xl shadow-red-200";
-                tr.className = "px-12 py-3.5 rounded-full text-[11px] font-black uppercase tracking-[0.2em] transition-all duration-500 text-zinc-500 hover:text-zinc-800";
+                tl.className = "px-12 py-4 rounded-full text-[11px] font-black uppercase tracking-[0.2em] transition-all duration-500 bg-red-600 text-white shadow-xl shadow-red-200";
+                tr.className = "px-12 py-4 rounded-full text-[11px] font-black uppercase tracking-[0.2em] transition-all duration-500 text-zinc-500 hover:text-zinc-800";
             } else {
-                tr.className = "px-12 py-3.5 rounded-full text-[11px] font-black uppercase tracking-[0.2em] transition-all duration-500 bg-red-600 text-white shadow-xl shadow-red-200";
-                tl.className = "px-12 py-3.5 rounded-full text-[11px] font-black uppercase tracking-[0.2em] transition-all duration-500 text-zinc-500 hover:text-zinc-800";
+                tr.className = "px-12 py-4 rounded-full text-[11px] font-black uppercase tracking-[0.2em] transition-all duration-500 bg-red-600 text-white shadow-xl shadow-red-200";
+                tl.className = "px-12 py-4 rounded-full text-[11px] font-black uppercase tracking-[0.2em] transition-all duration-500 text-zinc-500 hover:text-zinc-800";
             }
 
-            h.classList.add('fade-out');
-            s.classList.add('fade-out');
+            features.style.opacity = 0;
             setTimeout(() => {
-                h.innerHTML = content[mode].headline;
-                s.innerHTML = content[mode].subheadline;
-                document.getElementById('alert-high').innerHTML = content[mode].alerts[0];
-                document.getElementById('alert-low').innerHTML = content[mode].alerts[1];
-                document.getElementById('feature-list').innerHTML = content[mode].features.map(f => `
-                    <div class="flex gap-6 border-l-4 border-red-600 pl-8 py-3 transition-all hover:bg-zinc-50 rounded-r-2xl">
-                        <div><div class="font-black uppercase tracking-[0.2em] text-xs mb-3 font-sans">${f.title}</div><div class="text-zinc-500 text-base leading-relaxed font-medium">${f.desc}</div></div>
+                features.innerHTML = content[mode].features.map(f => `
+                    <div class="glass-card p-10 rounded-[3rem] shadow-soft border-l-8 border-red-600 hover:-translate-y-2 transition-all">
+                        <h4 class="font-black uppercase tracking-[0.2em] text-xs mb-4 text-zinc-900">${f.title}</h4>
+                        <p class="text-zinc-500 leading-relaxed font-medium text-sm">${f.desc}</p>
                     </div>
                 `).join('');
-                h.classList.remove('fade-out');
-                s.classList.remove('fade-out');
-                h.classList.add('fade-in');
-                s.classList.add('fade-in');
+                features.style.opacity = 1;
             }, 300);
         }
 
         window.onload = function() {
             setMode('lift');
-            document.getElementById('patch-svg-container').innerHTML = `<svg viewBox="0 0 200 200" class="w-56 h-56 group-hover:scale-105 transition-transform"><circle cx="100" cy="100" r="95" fill="#f8f8f8" stroke="#eeeeee" stroke-width="1" /><circle cx="100" cy="100" r="85" fill="white" stroke="#e5e5e5" stroke-width="1.5" /><circle cx="100" cy="100" r="68" fill="none" stroke="#E11D48" stroke-width="5" /><circle cx="100" cy="100" r="48" fill="#ffffff" stroke="#e5e5e5" stroke-width="2" /><text x="100" y="102" text-anchor="middle" font-size="10" font-weight="900" fill="#E11D48" class="uppercase tracking-widest italic" style="font-style: italic; font-weight:900;">NOVA</text><circle cx="100" cy="125" r="4.5" fill="#E11D48" class="animate-pulse-red" /></svg>`;
-            document.getElementById('clip-svg-container').innerHTML = `<svg viewBox="0 0 200 200" class="w-56 h-56 group-hover:scale-105 transition-transform"><rect x="65" y="25" width="70" height="150" rx="16" fill="white" stroke="#e5e5e5" stroke-width="2" /><rect x="75" y="35" width="50" height="6" rx="3" fill="#f1f1f1" /><path d="M65 145 L135 145 L145 165 L55 165 Z" fill="#f8f8f8" stroke="#e5e5e5" stroke-width="1" /><g transform="translate(65, 60) scale(0.35)"><circle cx="100" cy="100" r="70" fill="white" stroke="#E11D48" stroke-width="6" /><circle cx="100" cy="100" r="12" fill="#E11D48" /></g></svg>`;
-            
-            window.addEventListener('scroll', () => {
-                const nav = document.getElementById('navbar');
-                if (window.scrollY > 50) { 
-                    nav.classList.add('bg-white/90', 'backdrop-blur-xl', 'py-4', 'shadow-sm', 'border-b', 'border-zinc-100'); 
-                    nav.classList.remove('py-8', 'bg-transparent'); 
-                } else { 
-                    nav.classList.remove('bg-white/90', 'backdrop-blur-xl', 'py-4', 'shadow-sm', 'border-b', 'border-zinc-100'); 
-                    nav.classList.add('py-8', 'bg-transparent'); 
-                }
-            });
+            // Patch with LED pulse
+            document.getElementById('patch-svg-container').innerHTML = `
+                <svg viewBox="0 0 200 200" class="w-64 md:w-80 h-64 md:h-80 transition-all duration-700">
+                    <circle cx="100" cy="100" r="98" fill="#fef2f2" stroke="#fee2e2" stroke-width="1" />
+                    <circle cx="100" cy="100" r="88" fill="white" stroke="#e5e5e5" stroke-width="1.5" />
+                    <circle cx="100" cy="100" r="70" fill="none" stroke="#E11D48" stroke-width="4" class="animate-pulse-red shadow-lg"/>
+                    <circle cx="100" cy="100" r="50" fill="#ffffff" stroke="#e5e5e5" stroke-width="2" />
+                    <text x="100" y="102" text-anchor="middle" font-size="10" font-weight="900" fill="#E11D48" class="uppercase tracking-widest italic" style="font-style: italic; font-weight:900;">NOVA</text>
+                    <circle cx="100" cy="125" r="5" fill="#E11D48" class="animate-pulse-red" />
+                </svg>`;
+            // Tactical Clip
+            document.getElementById('clip-svg-container').innerHTML = `
+                <svg viewBox="0 0 200 200" class="w-48 h-48">
+                    <rect x="65" y="25" width="70" height="150" rx="16" fill="#18181b" stroke="#333" stroke-width="2" />
+                    <rect x="75" y="35" width="50" height="6" rx="3" fill="#333" />
+                    <path d="M65 145 L135 145 L145 165 L55 165 Z" fill="#222" />
+                    <g transform="translate(65, 60) scale(0.35)">
+                        <circle cx="100" cy="100" r="70" fill="#111" stroke="#E11D48" stroke-width="6" />
+                        <circle cx="100" cy="100" r="12" fill="#E11D48" />
+                    </g>
+                </svg>`;
 
             document.getElementById('signup-form').addEventListener('submit', async (e) => {
                 e.preventDefault();
                 const btn = document.getElementById('submit-btn');
                 const nameInput = document.getElementById('form-name');
                 const emailInput = document.getElementById('form-email');
-                
-                btn.innerHTML = "INITIALIZING...";
+                btn.innerHTML = "SYNCING BIOLOGY...";
                 btn.disabled = true;
 
-                // DEPLOYED GOOGLE APPS SCRIPT URL
-                const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzDLx7P-htXGLWi3zJhZgoa7_S2aQg3OlQHgnG1zRnK8MSQrWGR5ayRcuL3X8oiJtOnPw/exec";
+                const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyJqQH9LCR4Mhnbn20HZKg0fVOaIUCchKQhpvfvsTHSoGUZgK85INhE6P0YzNfSE2PCZw/exec";
 
                 try {
                     await fetch(SCRIPT_URL, { 
                         method: 'POST', 
                         mode: 'no-cors', 
-                        body: JSON.stringify({ 
-                            name: nameInput.value.toUpperCase(), 
-                            email: emailInput.value.toUpperCase(), 
-                            discipline: currentMode.toUpperCase(), 
-                            timestamp: new Date().toISOString() 
-                        }) 
+                        body: JSON.stringify({ name: nameInput.value.toUpperCase(), email: emailInput.value.toUpperCase(), discipline: currentMode.toUpperCase(), timestamp: new Date().toISOString() }) 
                     });
-                    
-                    document.getElementById('form-container').innerHTML = `
-                        <div class="py-10 space-y-6 animate-in fade-in duration-500">
-                            <div class="w-20 h-20 text-red-600 mx-auto border-4 border-red-600 rounded-full flex items-center justify-center font-bold text-3xl">✓</div>
-                            <h3 class="text-3xl font-black uppercase italic" style="font-style: italic">You're Synced.</h3>
-                            <p class="text-zinc-500">Welcome to the future of high-performance bio-monitoring.</p>
-                            <button onclick="location.reload()" class="text-red-600 font-black uppercase text-xs tracking-widest underline">Add another athlete</button>
-                        </div>
-                    `;
-                } catch (error) { 
-                    console.error('Submission Error:', error);
-                    btn.innerHTML = "ERROR. TRY AGAIN."; 
-                    btn.disabled = false; 
-                }
+                    document.getElementById('form-container').innerHTML = `<div class="py-10 text-center"><div class="w-24 h-24 text-red-600 mx-auto border-4 border-red-600 rounded-full flex items-center justify-center font-bold text-4xl mb-8 animate-bounce">✓</div><h3 class="text-4xl font-black uppercase italic mb-4">ACCESS INITIALIZED.</h3><p class="text-zinc-500 text-lg font-medium">Check your inbox for secure verification code.</p></div>`;
+                } catch (error) { btn.innerHTML = "ERROR. TRY AGAIN."; btn.disabled = false; }
             });
         };
+
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) { 
+                nav.classList.add('bg-white/90', 'backdrop-blur-xl', 'py-4', 'shadow-sm', 'border-b', 'border-zinc-100'); 
+            } else { 
+                nav.classList.remove('bg-white/90', 'backdrop-blur-xl', 'py-4', 'shadow-sm', 'border-b', 'border-zinc-100'); 
+            }
+        });
     </script>
 </body>
 </html>
