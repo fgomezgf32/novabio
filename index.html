@@ -28,16 +28,6 @@
         
         /* Logo Styling */
         .soma-logo-text { letter-spacing: -0.05em; font-style: italic; }
-
-        /* Clean Image Container */
-        .os-image-container {
-            width: 100%;
-            max-width: 400px;
-            border-radius: 24px;
-            overflow: hidden;
-            box-shadow: 0 40px 80px -15px rgba(0,0,0,0.3);
-            border: 1px solid rgba(255,255,255,0.1);
-        }
     </style>
 </head>
 <body class="bg-white">
@@ -46,32 +36,33 @@
     <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-500 py-6">
         <div class="container mx-auto px-6 flex justify-between items-center flex-row">
             <!-- Left Side: Logo (Image + Text) -->
-            <div class="flex items-center gap-4 group cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
-                <div id="logo-image-container" class="w-12 h-12 md:w-16 md:h-16 overflow-hidden rounded-xl border border-zinc-100 shadow-sm bg-zinc-50 p-1">
-                    <img src="image.png" alt="SOMA Logo" class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://via.placeholder.com/150x150?text=SOMA'">
+            <div class="flex items-center gap-3 group cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+                <div id="logo-image-container" class="w-12 h-12 md:w-16 md:h-16 overflow-hidden rounded-xl border border-zinc-100 shadow-sm">
+                    <!-- Replace logo.png with your uploaded file path -->
+                    <img src="logo.png" alt="SOMA Logo" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://via.placeholder.com/150x150?text=SOMA'">
                 </div>
                 <span class="text-3xl font-black soma-logo-text uppercase tracking-tighter">SOMA<span class="text-red-600 font-normal opacity-50">.</span></span>
             </div>
 
-            <!-- Right Side: Nav Links -->
-            <div class="hidden md:flex items-center gap-8 md:gap-10 text-[11px] font-bold uppercase tracking-[0.2em] text-zinc-400">
-                <a href="#interface" class="hover:text-red-600 transition-colors">Interface</a>
-                <a href="#hardware" class="hover:text-red-600 transition-colors">Hardware</a>
+            <!-- Right Side: Nav Links and CTA -->
+            <div class="flex items-center gap-8 md:gap-10 text-[11px] font-bold uppercase tracking-[0.2em] text-zinc-400">
+                <a href="#science" class="hover:text-red-600 transition-colors">Molecular Science</a>
+                <a href="#hardware" class="hover:text-red-600 transition-colors">Ecosystem</a>
                 <a href="#waitlist" class="hover:text-red-600 transition-colors">Join Alpha</a>
-                <button class="px-8 py-2.5 rounded-full bg-zinc-900 text-white font-black hover:bg-red-600 transition-all shadow-lg">Pre-Order</button>
+                <button class="hidden md:block px-8 py-2.5 rounded-full bg-zinc-900 text-white font-black hover:bg-red-600 transition-all shadow-lg">Pre-Order</button>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="relative pt-48 pb-24 md:pt-64 md:pb-48 text-center px-4 overflow-hidden bg-[radial-gradient(#f1f1f1_1px,transparent_1px)] [background-size:40px_40px]">
+    <section class="relative pt-44 pb-24 md:pt-64 md:pb-48 text-center px-4 overflow-hidden bg-[radial-gradient(#f1f1f1_1px,transparent_1px)] [background-size:40px_40px]">
         <div class="container mx-auto relative z-10">
-            <div class="inline-flex items-center gap-2 bg-red-50 text-red-600 px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-[0.2em] mb-10 border border-red-100 shadow-sm">
+            <div class="inline-flex items-center gap-2 bg-red-50 text-red-600 px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-[0.2em] mb-10 border border-red-100">
                 <span class="relative flex h-2 w-2">
                   <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
                   <span class="relative inline-flex rounded-full h-2 w-2 bg-red-600"></span>
                 </span>
-                Molecular Autoregulation v4.1 Active
+                SOMA v4.1: The Neural-Metabolic Interface
             </div>
 
             <h1 class="text-6xl md:text-[11rem] font-black tracking-tighter mb-8 leading-[0.8] uppercase italic text-zinc-900">
@@ -79,18 +70,18 @@
             </h1>
             
             <p class="max-w-3xl mx-auto text-lg md:text-2xl text-zinc-500 mb-16 font-medium leading-relaxed tracking-tight">
-                Direct molecular streaming to your ears. <br class="hidden md:block">
-                <span class="text-zinc-900 font-bold underline decoration-red-600 decoration-4 underline-offset-8">Real-time biological autoregulation has arrived.</span>
+                Heart rate is a proxy. SOMA is a direct feed. <br class="hidden md:block">
+                <span class="text-zinc-900 font-bold underline decoration-red-600 decoration-4 underline-offset-8">Real-time molecular autoregulation for the elite.</span>
             </p>
 
             <div class="flex flex-col md:flex-row items-center justify-center gap-6">
                 <a href="#waitlist" class="w-full md:w-auto px-16 py-8 rounded-full bg-red-600 text-white font-black uppercase tracking-widest hover:bg-zinc-900 transition-all shadow-red-glow transform hover:-translate-y-1">Initialize Access</a>
-                <a href="#interface" class="w-full md:w-auto px-16 py-8 rounded-full border-2 border-zinc-900 text-zinc-900 font-black uppercase tracking-widest hover:bg-zinc-900 hover:text-white transition-all transform hover:-translate-y-1 text-center font-sans">View OS</a>
+                <a href="#science" class="w-full md:w-auto px-16 py-8 rounded-full border-2 border-zinc-900 text-zinc-900 font-black uppercase tracking-widest hover:bg-zinc-900 hover:text-white transition-all transform hover:-translate-y-1 text-center font-sans">The Bio-Logic</a>
             </div>
         </div>
     </section>
 
-    <!-- Software & In-Ear Coaching Section -->
+<!-- Software & In-Ear Coaching Section -->
     <section id="interface" class="py-32 bg-zinc-900 text-white overflow-hidden relative">
         <div class="absolute top-0 right-0 w-1/3 h-1/2 bg-red-600 blur-[150px] opacity-10"></div>
         <div class="container mx-auto px-6">
@@ -146,41 +137,41 @@
         </div>
     </section>
 
-    <!-- Deep Science / The Three Pillars -->
-    <section id="science" class="py-32 bg-white">
+    <!-- Deep Science -->
+    <section id="science" class="py-32 bg-zinc-900 text-white diagonal-bg">
         <div class="container mx-auto px-6">
             <div class="text-center mb-24">
                 <h2 class="text-5xl md:text-7xl font-black italic uppercase tracking-tighter mb-6">Molecular <br><span class="text-red-600">Autoregulation.</span></h2>
-                <p class="max-w-2xl mx-auto text-zinc-500 text-lg font-medium italic">Standard wearables react to stress. SOMA predicts it.</p>
+                <p class="max-w-2xl mx-auto text-zinc-400 text-lg font-medium italic">SOMA bypasses optical estimations. We measure the exact metabolites circulating in your physical form.</p>
             </div>
 
             <div class="grid lg:grid-cols-3 gap-12">
-                <div class="p-10 bg-zinc-50 border border-zinc-100 rounded-[3rem] hover:border-red-600/30 hover:shadow-xl transition-all">
-                    <div class="w-12 h-12 rounded-xl bg-red-600 flex items-center justify-center mb-8 shadow-lg shadow-red-600/20">
+                <div class="p-10 bg-white/5 border border-white/10 rounded-[3rem] hover:border-red-600/50 transition-all group text-center lg:text-left">
+                    <div class="w-12 h-12 rounded-xl bg-red-600 flex items-center justify-center mb-8 shadow-lg shadow-red-600/20 group-hover:scale-110 transition-transform mx-auto lg:mx-0">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
                     </div>
-                    <h3 class="font-black uppercase tracking-widest text-xs mb-4">Ammonia Guard</h3>
-                    <p class="text-zinc-500 text-sm leading-relaxed font-medium">Detect the exact moment your body begins burning muscle for fuel. SOMA terminates sessions to preserve lean mass.</p>
+                    <h3 class="font-black uppercase tracking-widest text-xs mb-4">Metabolic Flux</h3>
+                    <p class="text-zinc-500 text-sm leading-relaxed">SOMA captures the constant state of change in your biomarkers, measuring waste products like Ammonia before they impact your CNS output.</p>
                 </div>
-                <div class="p-10 bg-zinc-50 border border-zinc-100 rounded-[3rem] hover:border-red-600/30 hover:shadow-xl transition-all">
-                    <div class="w-12 h-12 rounded-xl bg-red-600 flex items-center justify-center mb-8 shadow-lg shadow-red-600/20">
+                <div class="p-10 bg-white/5 border border-white/10 rounded-[3rem] hover:border-red-600/50 transition-all group text-center lg:text-left">
+                    <div class="w-12 h-12 rounded-xl bg-red-600 flex items-center justify-center mb-8 shadow-lg shadow-red-600/20 group-hover:scale-110 transition-transform mx-auto lg:mx-0">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg>
                     </div>
-                    <h3 class="font-black uppercase tracking-widest text-xs mb-4">Glucose Velocity</h3>
-                    <p class="text-zinc-500 text-sm leading-relaxed font-medium">Measure real-time energy expenditure. SOMA predicts glycogen depletion 12 minutes before performance failure.</p>
+                    <h3 class="font-black uppercase tracking-widest text-xs mb-4">Precision Intake</h3>
+                    <p class="text-zinc-500 text-sm leading-relaxed">Know your exact glucose burn rate. SOMA tells you not just *to* fuel, but the exact gram dosage required to stay in the oxidative zone.</p>
                 </div>
-                <div class="p-10 bg-zinc-50 border border-zinc-100 rounded-[3rem] hover:border-red-600/30 hover:shadow-xl transition-all">
-                    <div class="w-12 h-12 rounded-xl bg-red-600 flex items-center justify-center mb-8 shadow-lg shadow-red-600/20">
+                <div class="p-10 bg-white/5 border border-white/10 rounded-[3rem] hover:border-red-600/50 transition-all group text-center lg:text-left">
+                    <div class="w-12 h-12 rounded-xl bg-red-600 flex items-center justify-center mb-8 shadow-lg shadow-red-600/20 group-hover:scale-110 transition-transform mx-auto lg:mx-0">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
                     </div>
-                    <h3 class="font-black uppercase tracking-widest text-xs mb-4">CNS Readiness</h3>
-                    <p class="text-zinc-500 text-sm leading-relaxed font-medium">Monitor Potassium re-polarization at the cellular level. Know when your fibers are biologically ready for power.</p>
+                    <h3 class="font-black uppercase tracking-widest text-xs mb-4">Intracellular Stability</h3>
+                    <p class="text-zinc-500 text-sm leading-relaxed">Monitor potassium re-polarization at the cellular level. SOMA provides the biological green light for your next explosive set.</p>
                 </div>
             </div>
         </div>
     </section>
 
-     <!-- Force vs Flow Selector -->
+    <!-- Force vs Flow Selector -->
     <section class="py-32 bg-white px-6">
         <div class="container mx-auto">
             <div class="text-center mb-20">
