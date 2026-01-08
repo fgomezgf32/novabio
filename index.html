@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nova Bio | Train on Biology</title>
-    <!-- Tailwind CSS - High Speed CDN -->
+    <!-- Tailwind CSS - Standard CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
@@ -17,8 +17,6 @@
         .fade-transition { transition: opacity 0.3s ease, transform 0.3s ease; }
         .fade-out { opacity: 0; transform: translateY(10px); }
         .fade-in { opacity: 1; transform: translateY(0); }
-        
-        /* Ensure specific fonts are applied to buttons */
         button, input { font-family: 'Inter', sans-serif; }
     </style>
 </head>
@@ -116,8 +114,14 @@
                 <div id="form-container">
                     <form id="signup-form" class="space-y-6 mt-12 text-left">
                         <div class="grid md:grid-cols-2 gap-6">
-                            <input required type="text" id="form-name" placeholder="FULL NAME" class="bg-white border border-zinc-200 px-8 py-5 rounded-full text-zinc-900 font-bold uppercase tracking-widest focus:border-red-600 focus:outline-none transition-all shadow-sm" />
-                            <input required type="email" id="form-email" placeholder="EMAIL ADDRESS" class="bg-white border border-zinc-200 px-8 py-5 rounded-full text-zinc-900 font-bold uppercase tracking-widest focus:border-red-600 focus:outline-none transition-all shadow-sm" />
+                            <div class="space-y-2">
+                                <label class="text-[10px] font-black uppercase tracking-widest text-zinc-400 ml-4">Full Name</label>
+                                <input required type="text" id="form-name" placeholder="E.G. ALEX RIVERA" class="w-full bg-white border border-zinc-200 px-8 py-5 rounded-full text-zinc-900 font-bold uppercase tracking-widest focus:border-red-600 focus:outline-none transition-all shadow-sm" />
+                            </div>
+                            <div class="space-y-2">
+                                <label class="text-[10px] font-black uppercase tracking-widest text-zinc-400 ml-4">Email Address</label>
+                                <input required type="email" id="form-email" placeholder="ALEX@PERFORMANCE.TECH" class="w-full bg-white border border-zinc-200 px-8 py-5 rounded-full text-zinc-900 font-bold uppercase tracking-widest focus:border-red-600 focus:outline-none transition-all shadow-sm" />
+                            </div>
                         </div>
                         <button type="submit" id="submit-btn" class="w-full py-8 rounded-full bg-red-600 text-white font-black uppercase tracking-[0.3em] text-xl hover:bg-zinc-900 transition-all shadow-xl shadow-red-200 flex items-center justify-center gap-4">INITIALIZE ACCESS</button>
                     </form>
@@ -202,15 +206,40 @@
             document.getElementById('signup-form').addEventListener('submit', async (e) => {
                 e.preventDefault();
                 const btn = document.getElementById('submit-btn');
-                const name = document.getElementById('form-name').value;
-                const email = document.getElementById('form-email').value;
+                const nameInput = document.getElementById('form-name');
+                const emailInput = document.getElementById('form-email');
+                
                 btn.innerHTML = "INITIALIZING...";
                 btn.disabled = true;
-                const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwZ4iPHhtAwdk1J2akAgEV0Yjfoes2ptu_QSNY8_a2HZTLD-9eEhwjj1mP-8EcthPEG0Q/exec";
+
+                // DEPLOYED GOOGLE APPS SCRIPT URL
+                const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyJqQH9LCR4Mhnbn20HZKg0fVOaIUCchKQhpvfvsTHSoGUZgK85INhE6P0YzNfSE2PCZw/exec";
+
                 try {
-                    await fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify({ name, email, discipline: currentMode, timestamp: new Date().toISOString() }) });
-                    document.getElementById('form-container').innerHTML = `<div class="py-10 space-y-6"><div class="w-20 h-20 text-red-600 mx-auto border-4 border-red-600 rounded-full flex items-center justify-center font-bold text-3xl">✓</div><h3 class="text-3xl font-black uppercase italic" style="font-style: italic">You're Synced.</h3><p class="text-zinc-500">Welcome to the future of high-performance bio-monitoring.</p></div>`;
-                } catch (error) { btn.innerHTML = "ERROR. TRY AGAIN."; btn.disabled = false; }
+                    await fetch(SCRIPT_URL, { 
+                        method: 'POST', 
+                        mode: 'no-cors', 
+                        body: JSON.stringify({ 
+                            name: nameInput.value.toUpperCase(), 
+                            email: emailInput.value.toUpperCase(), 
+                            discipline: currentMode.toUpperCase(), 
+                            timestamp: new Date().toISOString() 
+                        }) 
+                    });
+                    
+                    document.getElementById('form-container').innerHTML = `
+                        <div class="py-10 space-y-6 animate-in fade-in duration-500">
+                            <div class="w-20 h-20 text-red-600 mx-auto border-4 border-red-600 rounded-full flex items-center justify-center font-bold text-3xl">✓</div>
+                            <h3 class="text-3xl font-black uppercase italic" style="font-style: italic">You're Synced.</h3>
+                            <p class="text-zinc-500">Welcome to the future of high-performance bio-monitoring.</p>
+                            <button onclick="location.reload()" class="text-red-600 font-black uppercase text-xs tracking-widest underline">Add another athlete</button>
+                        </div>
+                    `;
+                } catch (error) { 
+                    console.error('Submission Error:', error);
+                    btn.innerHTML = "ERROR. TRY AGAIN."; 
+                    btn.disabled = false; 
+                }
             });
         };
     </script>
