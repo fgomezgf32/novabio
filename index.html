@@ -28,6 +28,44 @@
         
         /* Logo Styling */
         .soma-logo-text { letter-spacing: -0.05em; font-style: italic; }
+
+        /* iPhone Mockup Container */
+        .phone-mockup {
+            width: 300px;
+            height: 620px;
+            background: #111;
+            border-radius: 45px;
+            border: 12px solid #1a1a1a;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 50px 100px -20px rgba(0,0,0,0.4);
+        }
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            background: #000;
+            object-fit: cover;
+        }
+        .phone-notch {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 30px;
+            background: #1a1a1a;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            z-index: 10;
+        }
+
+        /* Patch Image Mask */
+        .patch-hex-frame {
+            mask-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="50"/></svg>');
+            -webkit-mask-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="50"/></svg>');
+            mask-size: contain;
+            mask-repeat: no-repeat;
+        }
     </style>
 </head>
 <body class="bg-white">
@@ -37,19 +75,18 @@
         <div class="container mx-auto px-6 flex justify-between items-center flex-row">
             <!-- Left Side: Logo (Image + Text) -->
             <div class="flex items-center gap-3 group cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
-                <div id="logo-image-container" class="w-12 h-12 md:w-16 md:h-16 overflow-hidden rounded-xl border border-zinc-100 shadow-sm">
-                    <!-- Replace logo.png with your uploaded file path -->
-                    <img src="logo.png" alt="SOMA Logo" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://via.placeholder.com/150x150?text=SOMA'">
+                <div id="logo-image-container" class="w-12 h-12 md:w-14 md:h-14 overflow-hidden rounded-xl border border-zinc-100 shadow-sm bg-zinc-50 flex items-center justify-center p-1">
+                    <img src="image.png" alt="SOMA Logo" class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://via.placeholder.com/150x150?text=SOMA'">
                 </div>
                 <span class="text-3xl font-black soma-logo-text uppercase tracking-tighter">SOMA<span class="text-red-600 font-normal opacity-50">.</span></span>
             </div>
 
-            <!-- Right Side: Nav Links and CTA -->
-            <div class="flex items-center gap-8 md:gap-10 text-[11px] font-bold uppercase tracking-[0.2em] text-zinc-400">
-                <a href="#science" class="hover:text-red-600 transition-colors">Molecular Science</a>
-                <a href="#hardware" class="hover:text-red-600 transition-colors">Ecosystem</a>
+            <!-- Right Side: Nav Links -->
+            <div class="hidden md:flex items-center gap-8 md:gap-10 text-[11px] font-bold uppercase tracking-[0.2em] text-zinc-400">
+                <a href="#interface" class="hover:text-red-600 transition-colors">Interface</a>
+                <a href="#hardware" class="hover:text-red-600 transition-colors">The Patch</a>
                 <a href="#waitlist" class="hover:text-red-600 transition-colors">Join Alpha</a>
-                <button class="hidden md:block px-8 py-2.5 rounded-full bg-zinc-900 text-white font-black hover:bg-red-600 transition-all shadow-lg">Pre-Order</button>
+                <button class="px-8 py-2.5 rounded-full bg-zinc-900 text-white font-black hover:bg-red-600 transition-all shadow-lg">Pre-Order</button>
             </div>
         </div>
     </nav>
@@ -57,12 +94,12 @@
     <!-- Hero Section -->
     <section class="relative pt-44 pb-24 md:pt-64 md:pb-48 text-center px-4 overflow-hidden bg-[radial-gradient(#f1f1f1_1px,transparent_1px)] [background-size:40px_40px]">
         <div class="container mx-auto relative z-10">
-            <div class="inline-flex items-center gap-2 bg-red-50 text-red-600 px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-[0.2em] mb-10 border border-red-100">
+            <div class="inline-flex items-center gap-2 bg-red-50 text-red-600 px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-[0.2em] mb-10 border border-red-100 shadow-sm">
                 <span class="relative flex h-2 w-2">
                   <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
                   <span class="relative inline-flex rounded-full h-2 w-2 bg-red-600"></span>
                 </span>
-                SOMA v4.1: The Neural-Metabolic Interface
+                Neural-Metabolic Live Protocol v4.1
             </div>
 
             <h1 class="text-6xl md:text-[11rem] font-black tracking-tighter mb-8 leading-[0.8] uppercase italic text-zinc-900">
@@ -70,97 +107,139 @@
             </h1>
             
             <p class="max-w-3xl mx-auto text-lg md:text-2xl text-zinc-500 mb-16 font-medium leading-relaxed tracking-tight">
-                Heart rate is a proxy. SOMA is a direct feed. <br class="hidden md:block">
-                <span class="text-zinc-900 font-bold underline decoration-red-600 decoration-4 underline-offset-8">Real-time molecular autoregulation for the elite.</span>
+                Direct molecular streaming to your earbuds. <br class="hidden md:block">
+                <span class="text-zinc-900 font-bold underline decoration-red-600 decoration-4 underline-offset-8">Real-time biological autoregulation has arrived.</span>
             </p>
 
             <div class="flex flex-col md:flex-row items-center justify-center gap-6">
                 <a href="#waitlist" class="w-full md:w-auto px-16 py-8 rounded-full bg-red-600 text-white font-black uppercase tracking-widest hover:bg-zinc-900 transition-all shadow-red-glow transform hover:-translate-y-1">Initialize Access</a>
-                <a href="#science" class="w-full md:w-auto px-16 py-8 rounded-full border-2 border-zinc-900 text-zinc-900 font-black uppercase tracking-widest hover:bg-zinc-900 hover:text-white transition-all transform hover:-translate-y-1 text-center font-sans">The Bio-Logic</a>
+                <a href="#interface" class="w-full md:w-auto px-16 py-8 rounded-full border-2 border-zinc-900 text-zinc-900 font-black uppercase tracking-widest hover:bg-zinc-900 hover:text-white transition-all transform hover:-translate-y-1 text-center font-sans">View OS</a>
             </div>
         </div>
     </section>
 
-    <!-- Deep Science -->
-    <section id="science" class="py-32 bg-zinc-900 text-white diagonal-bg">
+    <!-- Software & In-Ear Coaching Section -->
+    <section id="interface" class="py-32 bg-zinc-900 text-white overflow-hidden relative">
+        <div class="absolute top-0 right-0 w-1/3 h-1/2 bg-red-600 blur-[150px] opacity-10"></div>
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row items-center gap-20">
+                <!-- Left Content -->
+                <div class="lg:w-1/2 z-10">
+                    <div class="inline-flex items-center gap-2 text-red-600 text-[10px] font-black uppercase tracking-[0.3em] mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20"/></svg>
+                        SOMA OS: Biological HUD
+                    </div>
+                    <h2 class="text-5xl md:text-7xl font-black italic uppercase tracking-tighter mb-8 leading-none">In-Ear <br><span class="text-red-600">Bio-Coaching.</span></h2>
+                    <p class="text-zinc-400 text-xl font-medium leading-relaxed mb-10">
+                        Put your phone away. SOMA's neural engine processes your metabolic exhaust and delivers real-time coaching cues directly to your headphones. It's like having a clinical physiologist in your ear, every rep of every set.
+                    </p>
+                    
+                    <div class="grid gap-6">
+                        <div class="flex items-center gap-5 p-8 bg-white/5 border border-white/10 rounded-3xl shadow-2xl transition-all hover:bg-white/10">
+                            <div class="bg-red-600 p-4 rounded-2xl text-white shadow-lg shadow-red-600/30">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
+                            </div>
+                            <div>
+                                <h4 class="font-black uppercase tracking-[0.2em] text-[10px] text-red-600 mb-2">Live Voice Feedback</h4>
+                                <p class="text-white text-lg font-bold">"Lactate peaking. Target HR: 162. Drop pace 5s/km."</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-5 p-8 bg-white/5 border border-white/10 rounded-3xl shadow-2xl transition-all hover:bg-white/10">
+                            <div class="bg-white/10 p-4 rounded-2xl text-zinc-400">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20"/></svg>
+                            </div>
+                            <div>
+                                <h4 class="font-black uppercase tracking-[0.2em] text-[10px] text-zinc-500 mb-2">Neuro-Recovery Sync</h4>
+                                <p class="text-white text-lg font-bold">"Ammonia spike detected. Session terminated to prevent catabolism."</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Visual: Phone Mockup with User Screenshot -->
+                <div class="lg:w-1/2 flex justify-center relative">
+                    <div class="phone-mockup relative z-10 transition-transform duration-700 hover:rotate-1">
+                        <div class="phone-notch"></div>
+                        <!-- Using image.png as the app dashboard screen -->
+                        <img src="image.png" alt="SOMA App Interface" class="phone-screen" onerror="this.src='https://via.placeholder.com/300x600?text=SOMA+OS'">
+                    </div>
+                    <!-- Floating Data Pill -->
+                    <div class="absolute -bottom-6 -left-10 md:-left-20 bg-red-600 text-white p-8 rounded-[2rem] shadow-2xl z-20 max-w-[280px] border border-red-500 hidden md:block">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-2.5 h-2.5 rounded-full bg-white animate-pulse"></div>
+                            <span class="text-[9px] font-black uppercase tracking-widest text-white/80">Molecular Lab Active</span>
+                        </div>
+                        <p class="text-sm font-bold leading-tight uppercase italic tracking-tight">"Glucose burn rate exceeding buffer. Fuel now."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Deep Science / The Three Pillars -->
+    <section id="science" class="py-32 bg-white">
         <div class="container mx-auto px-6">
             <div class="text-center mb-24">
-                <h2 class="text-5xl md:text-7xl font-black italic uppercase tracking-tighter mb-6">Molecular <br><span class="text-red-600">Autoregulation.</span></h2>
-                <p class="max-w-2xl mx-auto text-zinc-400 text-lg font-medium italic">SOMA bypasses optical estimations. We measure the exact metabolites circulating in your physical form.</p>
+                <h2 class="text-5xl md:text-7xl font-black italic uppercase tracking-tighter mb-6">Clinical <br><span class="text-red-600">Bio-Sensing.</span></h2>
+                <p class="max-w-2xl mx-auto text-zinc-500 text-lg font-medium italic">Standard wearables look at your pulse. SOMA looks at your fuel.</p>
             </div>
 
             <div class="grid lg:grid-cols-3 gap-12">
-                <div class="p-10 bg-white/5 border border-white/10 rounded-[3rem] hover:border-red-600/50 transition-all group text-center lg:text-left">
-                    <div class="w-12 h-12 rounded-xl bg-red-600 flex items-center justify-center mb-8 shadow-lg shadow-red-600/20 group-hover:scale-110 transition-transform mx-auto lg:mx-0">
+                <div class="p-10 bg-zinc-50 border border-zinc-100 rounded-[3rem] hover:border-red-600/30 hover:shadow-xl transition-all">
+                    <div class="w-12 h-12 rounded-xl bg-red-600 flex items-center justify-center mb-8 shadow-lg shadow-red-600/20">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
                     </div>
-                    <h3 class="font-black uppercase tracking-widest text-xs mb-4">Metabolic Flux</h3>
-                    <p class="text-zinc-500 text-sm leading-relaxed">SOMA captures the constant state of change in your biomarkers, measuring waste products like Ammonia before they impact your CNS output.</p>
+                    <h3 class="font-black uppercase tracking-widest text-xs mb-4">Ammonia Kill-Switch</h3>
+                    <p class="text-zinc-500 text-sm leading-relaxed font-medium">Detect the exact moment your body starts breaking down muscle protein for fuel. Nova stops catabolism before it starts.</p>
                 </div>
-                <div class="p-10 bg-white/5 border border-white/10 rounded-[3rem] hover:border-red-600/50 transition-all group text-center lg:text-left">
-                    <div class="w-12 h-12 rounded-xl bg-red-600 flex items-center justify-center mb-8 shadow-lg shadow-red-600/20 group-hover:scale-110 transition-transform mx-auto lg:mx-0">
+                <div class="p-10 bg-zinc-50 border border-zinc-100 rounded-[3rem] hover:border-red-600/30 hover:shadow-xl transition-all">
+                    <div class="w-12 h-12 rounded-xl bg-red-600 flex items-center justify-center mb-8 shadow-lg shadow-red-600/20">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg>
                     </div>
-                    <h3 class="font-black uppercase tracking-widest text-xs mb-4">Precision Intake</h3>
-                    <p class="text-zinc-500 text-sm leading-relaxed">Know your exact glucose burn rate. SOMA tells you not just *to* fuel, but the exact gram dosage required to stay in the oxidative zone.</p>
+                    <h3 class="font-black uppercase tracking-widest text-xs mb-4">Glucose Velocity</h3>
+                    <p class="text-zinc-500 text-sm leading-relaxed font-medium">Know your exact energy burn rate in real-time. Predict 'The Wall' before you hit it and fuel with gram-level precision.</p>
                 </div>
-                <div class="p-10 bg-white/5 border border-white/10 rounded-[3rem] hover:border-red-600/50 transition-all group text-center lg:text-left">
-                    <div class="w-12 h-12 rounded-xl bg-red-600 flex items-center justify-center mb-8 shadow-lg shadow-red-600/20 group-hover:scale-110 transition-transform mx-auto lg:mx-0">
+                <div class="p-10 bg-zinc-50 border border-zinc-100 rounded-[3rem] hover:border-red-600/30 hover:shadow-xl transition-all">
+                    <div class="w-12 h-12 rounded-xl bg-red-600 flex items-center justify-center mb-8 shadow-lg shadow-red-600/20">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
                     </div>
-                    <h3 class="font-black uppercase tracking-widest text-xs mb-4">Intracellular Stability</h3>
-                    <p class="text-zinc-500 text-sm leading-relaxed">Monitor potassium re-polarization at the cellular level. SOMA provides the biological green light for your next explosive set.</p>
+                    <h3 class="font-black uppercase tracking-widest text-xs mb-4">CNS Recharge</h3>
+                    <p class="text-zinc-500 text-sm leading-relaxed font-medium">Monitor Potassium re-polarization at the cellular level. Get the green light when your fibers are biologically ready for power.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Force vs Flow Selector -->
-    <section class="py-32 bg-white px-6">
-        <div class="container mx-auto">
-            <div class="text-center mb-20">
-                <h2 class="text-5xl md:text-7xl font-black italic uppercase tracking-tighter mb-6">Choose Your <span class="text-red-600">Discipline</span>.</h2>
-                <div class="flex items-center justify-center">
-                    <div class="bg-zinc-100 rounded-full p-1.5 border border-zinc-200 flex items-center shadow-inner">
-                        <button id="toggle-lift" onclick="setMode('lift')" class="px-12 py-4 rounded-full text-[11px] font-black uppercase tracking-[0.2em] transition-all duration-500 bg-red-600 text-white shadow-xl shadow-red-200">The Force (Lifting)</button>
-                        <button id="toggle-run" onclick="setMode('run')" class="px-12 py-4 rounded-full text-[11px] font-black uppercase tracking-[0.2em] transition-all duration-500 text-zinc-500 hover:text-zinc-800">The Flow (Running)</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto" id="dynamic-features">
-                <!-- Injected via JS -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Hardware Ecosystem (Tricep Focus) -->
+    <!-- Hardware Ecosystem (Tricep Patch Image) -->
     <section id="hardware" class="py-32 bg-zinc-50 border-y border-zinc-100 overflow-hidden">
         <div class="container mx-auto px-6">
             <div class="grid lg:grid-cols-2 gap-20 items-center">
                 <div class="relative flex justify-center">
-                    <div class="absolute inset-0 bg-red-600 blur-[120px] opacity-10 scale-150"></div>
-                    <div id="patch-svg-container" class="relative z-10 transition-all duration-1000 transform hover:scale-105">
-                        <!-- SOMA Patch Graphic Injected -->
+                    <div class="absolute inset-0 bg-red-600 blur-[150px] opacity-10 scale-125"></div>
+                    <div class="relative z-10 w-full max-w-md">
+                        <!-- Using image_3eb4e1.png for the hardware/patch render -->
+                        <div class="aspect-square bg-white rounded-[4rem] p-4 shadow-2xl border border-zinc-100 overflow-hidden">
+                            <img src="image_3eb4e1.png" alt="SOMA Tricep Patch" class="w-full h-full object-cover rounded-[3rem]" onerror="this.src='https://via.placeholder.com/500x500?text=SOMA+PATCH'">
+                        </div>
                     </div>
                 </div>
                 <div>
                     <div class="inline-flex items-center gap-2 text-red-600 text-[10px] font-black uppercase tracking-[0.3em] mb-6">
                         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
-                        Hardware Architecture: Tricep-Prime
+                        Hardware: Tricep-Prime Protocol
                     </div>
                     <h2 class="text-5xl md:text-7xl font-black italic uppercase tracking-tighter mb-8 leading-none">The <br><span class="text-red-600 underline decoration-8 underline-offset-8">Tricep Patch.</span></h2>
-                    <p class="text-zinc-500 text-xl font-medium leading-relaxed mb-10">
-                        The tricep is the optimal anatomical site for bio-sensing due to nerve proximity and high sweat gland density. Our low-profile adhesive patch captures your molecular data and reflects your state via a 360° LED ring.
+                    <p class="text-zinc-500 text-xl font-medium leading-relaxed mb-10 italic">
+                        Why the tricep? It offers the highest sampling consistency for continuous bio-flux during dynamic movement. 
                     </p>
                     <div class="space-y-6">
-                        <div class="flex gap-4 items-center p-6 bg-white rounded-3xl border border-zinc-200 shadow-sm transition-all hover:border-zinc-400">
-                            <div class="w-3 h-3 rounded-full bg-white border-2 border-zinc-300 shadow-[0_0_10px_rgba(0,0,0,0.2)]"></div>
-                            <p class="text-[11px] font-black uppercase tracking-widest text-zinc-900">White LED: <span class="text-zinc-400 font-medium lowercase italic">Biological System Ready</span></p>
+                        <div class="flex gap-4 items-center p-6 bg-white rounded-3xl border border-zinc-200 shadow-sm transition-all hover:border-red-600/30">
+                            <div class="w-4 h-4 rounded-full bg-zinc-200 border-2 border-zinc-300"></div>
+                            <p class="text-[11px] font-black uppercase tracking-widest text-zinc-900">White Ring: <span class="text-zinc-400 font-medium">Equilibrium</span></p>
                         </div>
                         <div class="flex gap-4 items-center p-6 bg-white rounded-3xl border border-red-100 shadow-md transition-all hover:shadow-red-200">
-                            <div class="w-3 h-3 rounded-full bg-red-600 animate-pulse shadow-[0_0_15px_rgba(225,29,72,0.8)]"></div>
-                            <p class="text-[11px] font-black uppercase tracking-widest text-red-600">Red LED: <span class="text-red-400 italic font-medium tracking-normal lowercase">Catabolic Breakdown Warning</span></p>
+                            <div class="w-4 h-4 rounded-full bg-red-600 animate-pulse shadow-[0_0_15px_rgba(225,29,72,0.8)]"></div>
+                            <p class="text-[11px] font-black uppercase tracking-widest text-red-600">Red Ring: <span class="text-red-400 italic font-medium tracking-normal lowercase">Active Metabolic Spike</span></p>
                         </div>
                     </div>
                 </div>
@@ -168,42 +247,22 @@
         </div>
     </section>
 
-    <!-- Tactical Clip -->
-    <section class="py-24 bg-white px-6">
-        <div class="container mx-auto max-w-5xl">
-            <div class="bg-zinc-900 rounded-[4rem] p-12 md:p-20 flex flex-col md:flex-row items-center gap-16 shadow-2xl">
-                <div id="clip-svg-container" class="flex-shrink-0"></div>
-                <div class="text-white">
-                    <h3 class="text-4xl font-black italic uppercase tracking-tight mb-6">The SOMA Clip</h3>
-                    <p class="text-zinc-400 text-lg leading-relaxed mb-10 font-medium italic">
-                        For non-adhesive monitoring. The SOMA Core snaps into a tactical housing for waistband or chest-strap attachment. Minimalist. Durable. Absolute precision for hybrid environments.
-                    </p>
-                    <div class="flex gap-4">
-                        <span class="px-6 py-2 rounded-full border border-white/20 text-[10px] font-black uppercase tracking-widest text-zinc-400">Precision Grade</span>
-                        <span class="px-6 py-2 rounded-full border border-white/20 text-[10px] font-black uppercase tracking-widest text-zinc-400">Impact Rated</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Final Signup -->
+    <!-- Final Waitlist -->
     <section id="waitlist" class="py-48 bg-zinc-900 relative overflow-hidden">
-        <div class="absolute top-0 right-0 w-1/2 h-1/2 bg-red-600 blur-[180px] opacity-10"></div>
         <div class="container mx-auto px-6 max-w-4xl relative z-10 text-center">
-            <h2 class="text-7xl md:text-[11rem] font-black italic uppercase mb-12 tracking-tighter text-white leading-none">JOIN THE <span class="text-red-600">ALPHA.</span></h2>
-            <p class="text-zinc-400 text-xl md:text-2xl mb-20 font-medium">The SOMA Alpha Phase is limited to 500 performers. Secure your rank.</p>
+            <h2 class="text-7xl md:text-[11rem] font-black italic uppercase mb-12 tracking-tighter text-white leading-none">JOIN THE <br><span class="text-red-600">ALPHA.</span></h2>
+            <p class="text-zinc-400 text-xl md:text-2xl mb-20 font-medium">Alpha Phase: 500 performers only. Secure your molecular rank.</p>
             
-            <div id="form-container" class="bg-white p-10 md:p-20 rounded-[4rem] shadow-2xl text-left transform -translate-y-4">
+            <div id="form-container" class="bg-white p-10 md:p-20 rounded-[4rem] shadow-2xl text-left border border-zinc-100">
                 <form id="signup-form" class="space-y-8">
                     <div class="grid md:grid-cols-2 gap-8">
                         <div class="space-y-3">
-                            <label class="text-[10px] font-black uppercase tracking-widest text-zinc-400 ml-5">Athlete Name</label>
-                            <input required type="text" id="form-name" placeholder="E.G. ALEX RIVERA" class="w-full bg-zinc-50 border-2 border-zinc-100 px-10 py-6 rounded-full text-zinc-900 font-bold uppercase tracking-widest focus:border-red-600 focus:outline-none transition-all shadow-inner" />
+                            <label class="text-[10px] font-black uppercase tracking-widest text-zinc-400 ml-5 italic">Athlete Name</label>
+                            <input required type="text" id="form-name" placeholder="E.G. ALEX RIVERA" class="w-full bg-zinc-50 border-2 border-zinc-100 px-10 py-6 rounded-full text-zinc-900 font-bold uppercase tracking-widest focus:border-red-600 focus:outline-none transition-all shadow-sm" />
                         </div>
                         <div class="space-y-3">
-                            <label class="text-[10px] font-black uppercase tracking-widest text-zinc-400 ml-5">Direct Email</label>
-                            <input required type="email" id="form-email" placeholder="ALEX@PERFORMANCE.TECH" class="w-full bg-zinc-50 border-2 border-zinc-100 px-10 py-6 rounded-full text-zinc-900 font-bold uppercase tracking-widest focus:border-red-600 focus:outline-none transition-all shadow-inner" />
+                            <label class="text-[10px] font-black uppercase tracking-widest text-zinc-400 ml-5 italic">Direct Email</label>
+                            <input required type="email" id="form-email" placeholder="ALEX@PERFORMANCE.TECH" class="w-full bg-zinc-50 border-2 border-zinc-100 px-10 py-6 rounded-full text-zinc-900 font-bold uppercase tracking-widest focus:border-red-600 focus:outline-none transition-all shadow-sm" />
                         </div>
                     </div>
                     <button type="submit" id="submit-btn" class="w-full py-10 rounded-full bg-red-600 text-white font-black uppercase tracking-[0.4em] text-2xl hover:bg-zinc-900 transition-all shadow-red-glow flex items-center justify-center">INITIALIZE ACCESS</button>
@@ -215,82 +274,16 @@
     <footer class="py-24 text-center bg-white border-t border-zinc-100">
         <div class="flex items-center justify-center gap-4 mb-8">
             <div class="w-10 h-10 rounded-lg overflow-hidden border border-zinc-100">
-                <img src="logo.png" alt="SOMA" class="w-full h-full object-cover" onerror="this.style.display='none'">
+                <img src="image.png" alt="SOMA" class="w-full h-full object-cover" onerror="this.style.display='none'">
             </div>
             <span class="text-4xl font-black soma-logo-text uppercase italic tracking-tighter">SOMA<span class="text-red-600 font-normal">.</span></span>
         </div>
-        <p class="text-zinc-400 text-xs font-bold uppercase tracking-[0.5em] mb-12 italic">The Body, Decoded. Powered by SOMA Bio-Labs.</p>
-        <div class="text-[10px] font-black uppercase tracking-[0.5em] text-zinc-300">© 2026 SOMA Technologies Group. All Rights Reserved.</div>
+        <p class="text-zinc-400 text-[9px] font-black uppercase tracking-[0.5em] mb-12">The Body, Decoded. Powered by SOMA Bio-Labs.</p>
+        <div class="text-[10px] font-bold uppercase tracking-[0.5em] text-zinc-300">© 2026 SOMA Technologies Group. All Rights Reserved.</div>
     </footer>
 
     <script>
-        const content = {
-            lift: {
-                features: [
-                    { title: "CNS Shield", desc: "Measures Cortisol-to-DHEA in tricep sweat. SOMA detects nervous system burnout before you touch the bar." },
-                    { title: "Ammonia Guard", desc: "Real-time sensing of nitrogenous waste. SOMA alerts you the second your body begins breaking down muscle tissue for glucose." },
-                    { title: "Potassium Stabilizer", desc: "Monitors intracellular electrical recharge. Get a ping the second your fibers have stabilized for peak explosive power." }
-                ]
-            },
-            run: {
-                features: [
-                    { title: "Lactate Threshold", desc: "Continuous tricep monitoring. Maintain oxidative flow by staying exactly 1.5% below your metabolic ceiling." },
-                    { title: "The Wall Predictor", desc: "SOMA analyzes the glucose depletion curve. Receive a high-priority warning 12 minutes before the 'bonk'." },
-                    { title: "Precision Salt", desc: "Measures Sodium loss per hour. SOMA provides the exact electrolyte ratio needed to sustain neuromuscular function." }
-                ]
-            }
-        };
-
-        let currentMode = 'lift';
-
-        function setMode(mode) {
-            currentMode = mode;
-            const tl = document.getElementById('toggle-lift');
-            const tr = document.getElementById('toggle-run');
-            const features = document.getElementById('dynamic-features');
-
-            if (mode === 'lift') {
-                tl.className = "px-12 py-4 rounded-full text-[11px] font-black uppercase tracking-[0.2em] transition-all duration-500 bg-red-600 text-white shadow-xl shadow-red-200";
-                tr.className = "px-12 py-4 rounded-full text-[11px] font-black uppercase tracking-[0.2em] transition-all duration-500 text-zinc-500 hover:text-zinc-800";
-            } else {
-                tr.className = "px-12 py-4 rounded-full text-[11px] font-black uppercase tracking-[0.2em] transition-all duration-500 bg-red-600 text-white shadow-xl shadow-red-200";
-                tl.className = "px-12 py-4 rounded-full text-[11px] font-black uppercase tracking-[0.2em] transition-all duration-500 text-zinc-500 hover:text-zinc-800";
-            }
-
-            features.style.opacity = 0;
-            setTimeout(() => {
-                features.innerHTML = content[mode].features.map(f => `
-                    <div class="glass-card p-10 rounded-[3rem] shadow-soft border-l-8 border-red-600 hover:-translate-y-2 transition-all">
-                        <h4 class="font-black uppercase tracking-[0.2em] text-xs mb-4 text-zinc-900">${f.title}</h4>
-                        <p class="text-zinc-500 leading-relaxed font-medium text-sm">${f.desc}</p>
-                    </div>
-                `).join('');
-                features.style.opacity = 1;
-            }, 300);
-        }
-
         window.onload = function() {
-            setMode('lift');
-            
-            // SOMA Patch Graphic (Hardware Visualization)
-            document.getElementById('patch-svg-container').innerHTML = `
-                <svg viewBox="0 0 200 200" class="w-64 md:w-96 h-64 md:h-96 transition-all duration-700">
-                    <circle cx="100" cy="100" r="98" fill="#fef2f2" stroke="#fee2e2" stroke-width="1" />
-                    <circle cx="100" cy="100" r="88" fill="white" stroke="#e5e5e5" stroke-width="1.5" />
-                    <!-- LED Ring -->
-                    <circle cx="100" cy="100" r="72" fill="none" stroke="#E11D48" stroke-width="6" class="animate-pulse shadow-lg"/>
-                    <circle cx="100" cy="100" r="54" fill="#ffffff" stroke="#e5e5e5" stroke-width="1" />
-                </svg>`;
-            
-            // SOMA Clip Graphic
-            document.getElementById('clip-svg-container').innerHTML = `
-                <svg viewBox="0 0 200 200" class="w-48 h-48">
-                    <rect x="65" y="25" width="70" height="150" rx="16" fill="#18181b" stroke="#333" stroke-width="2" />
-                    <g transform="translate(68, 65) scale(0.3)">
-                        <circle cx="100" cy="100" r="70" fill="#111" stroke="#E11D48" stroke-width="6" />
-                    </g>
-                </svg>`;
-
             document.getElementById('signup-form').addEventListener('submit', async (e) => {
                 e.preventDefault();
                 const btn = document.getElementById('submit-btn');
@@ -305,7 +298,7 @@
                     await fetch(SCRIPT_URL, { 
                         method: 'POST', 
                         mode: 'no-cors', 
-                        body: JSON.stringify({ name: name.toUpperCase(), email: email.toUpperCase(), discipline: currentMode.toUpperCase(), timestamp: new Date().toISOString() }) 
+                        body: JSON.stringify({ name: name.toUpperCase(), email: email.toUpperCase(), timestamp: new Date().toISOString() }) 
                     });
                     document.getElementById('form-container').innerHTML = `<div class="py-10 text-center"><div class="w-24 h-24 text-red-600 mx-auto border-4 border-red-600 rounded-full flex items-center justify-center font-bold text-4xl mb-8 animate-bounce">✓</div><h3 class="text-4xl font-black uppercase italic mb-4 text-zinc-900 tracking-tighter">ACCESS GRANTED.</h3><p class="text-zinc-500 text-lg font-medium italic">SOMA verification code sent to secure inbox.</p></div>`;
                 } catch (error) { 
