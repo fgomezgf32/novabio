@@ -29,42 +29,14 @@
         /* Logo Styling */
         .soma-logo-text { letter-spacing: -0.05em; font-style: italic; }
 
-        /* iPhone Mockup Container */
-        .phone-mockup {
-            width: 300px;
-            height: 620px;
-            background: #111;
-            border-radius: 45px;
-            border: 12px solid #1a1a1a;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 50px 100px -20px rgba(0,0,0,0.4);
-        }
-        .phone-screen {
+        /* Clean Image Container */
+        .os-image-container {
             width: 100%;
-            height: 100%;
-            background: #000;
-            object-fit: cover;
-        }
-        .phone-notch {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 120px;
-            height: 30px;
-            background: #1a1a1a;
-            border-bottom-left-radius: 20px;
-            border-bottom-right-radius: 20px;
-            z-index: 10;
-        }
-
-        /* Patch Image Mask */
-        .patch-hex-frame {
-            mask-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="50"/></svg>');
-            -webkit-mask-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="50"/></svg>');
-            mask-size: contain;
-            mask-repeat: no-repeat;
+            max-width: 400px;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 40px 80px -15px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.1);
         }
     </style>
 </head>
@@ -74,8 +46,8 @@
     <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-500 py-6">
         <div class="container mx-auto px-6 flex justify-between items-center flex-row">
             <!-- Left Side: Logo (Image + Text) -->
-            <div class="flex items-center gap-3 group cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
-                <div id="logo-image-container" class="w-12 h-12 md:w-14 md:h-14 overflow-hidden rounded-xl border border-zinc-100 shadow-sm bg-zinc-50 flex items-center justify-center p-1">
+            <div class="flex items-center gap-4 group cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+                <div id="logo-image-container" class="w-12 h-12 md:w-16 md:h-16 overflow-hidden rounded-xl border border-zinc-100 shadow-sm bg-zinc-50 p-1">
                     <img src="image.png" alt="SOMA Logo" class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://via.placeholder.com/150x150?text=SOMA'">
                 </div>
                 <span class="text-3xl font-black soma-logo-text uppercase tracking-tighter">SOMA<span class="text-red-600 font-normal opacity-50">.</span></span>
@@ -83,7 +55,7 @@
 
             <!-- Right Side: Nav Links -->
             <div class="hidden md:flex items-center gap-8 md:gap-10 text-[11px] font-bold uppercase tracking-[0.2em] text-zinc-400">
-                <a href="#interface" class="hover:text-red-600 transition-colors">Interface</a>
+                <a href="#interface" class="hover:text-red-600 transition-colors">OS Interface</a>
                 <a href="#hardware" class="hover:text-red-600 transition-colors">The Patch</a>
                 <a href="#waitlist" class="hover:text-red-600 transition-colors">Join Alpha</a>
                 <button class="px-8 py-2.5 rounded-full bg-zinc-900 text-white font-black hover:bg-red-600 transition-all shadow-lg">Pre-Order</button>
@@ -92,14 +64,14 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="relative pt-44 pb-24 md:pt-64 md:pb-48 text-center px-4 overflow-hidden bg-[radial-gradient(#f1f1f1_1px,transparent_1px)] [background-size:40px_40px]">
+    <section class="relative pt-48 pb-24 md:pt-64 md:pb-48 text-center px-4 overflow-hidden bg-[radial-gradient(#f1f1f1_1px,transparent_1px)] [background-size:40px_40px]">
         <div class="container mx-auto relative z-10">
             <div class="inline-flex items-center gap-2 bg-red-50 text-red-600 px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-[0.2em] mb-10 border border-red-100 shadow-sm">
                 <span class="relative flex h-2 w-2">
                   <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
                   <span class="relative inline-flex rounded-full h-2 w-2 bg-red-600"></span>
                 </span>
-                Neural-Metabolic Live Protocol v4.1
+                Molecular Autoregulation v4.1 Active
             </div>
 
             <h1 class="text-6xl md:text-[11rem] font-black tracking-tighter mb-8 leading-[0.8] uppercase italic text-zinc-900">
@@ -107,7 +79,7 @@
             </h1>
             
             <p class="max-w-3xl mx-auto text-lg md:text-2xl text-zinc-500 mb-16 font-medium leading-relaxed tracking-tight">
-                Direct molecular streaming to your earbuds. <br class="hidden md:block">
+                Direct molecular streaming to your ears. <br class="hidden md:block">
                 <span class="text-zinc-900 font-bold underline decoration-red-600 decoration-4 underline-offset-8">Real-time biological autoregulation has arrived.</span>
             </p>
 
@@ -127,21 +99,21 @@
                 <div class="lg:w-1/2 z-10">
                     <div class="inline-flex items-center gap-2 text-red-600 text-[10px] font-black uppercase tracking-[0.3em] mb-6">
                         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20"/></svg>
-                        SOMA OS: Biological HUD
+                        Neural-Metabolic Live Stream
                     </div>
-                    <h2 class="text-5xl md:text-7xl font-black italic uppercase tracking-tighter mb-8 leading-none">In-Ear <br><span class="text-red-600">Bio-Coaching.</span></h2>
+                    <h2 class="text-5xl md:text-7xl font-black italic uppercase tracking-tighter mb-8 leading-none text-white">In-Ear <br><span class="text-red-600">Bio-Coaching.</span></h2>
                     <p class="text-zinc-400 text-xl font-medium leading-relaxed mb-10">
-                        Put your phone away. SOMA's neural engine processes your metabolic exhaust and delivers real-time coaching cues directly to your headphones. It's like having a clinical physiologist in your ear, every rep of every set.
+                        SOMA's neural engine processes metabolic flux in real-time and delivers coaching cues directly to your earbuds. Your biology now has a voice.
                     </p>
                     
                     <div class="grid gap-6">
                         <div class="flex items-center gap-5 p-8 bg-white/5 border border-white/10 rounded-3xl shadow-2xl transition-all hover:bg-white/10">
                             <div class="bg-red-600 p-4 rounded-2xl text-white shadow-lg shadow-red-600/30">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0-2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
                             </div>
                             <div>
-                                <h4 class="font-black uppercase tracking-[0.2em] text-[10px] text-red-600 mb-2">Live Voice Feedback</h4>
-                                <p class="text-white text-lg font-bold">"Lactate peaking. Target HR: 162. Drop pace 5s/km."</p>
+                                <h4 class="font-black uppercase tracking-[0.2em] text-[10px] text-red-600 mb-2">Voice Instruction</h4>
+                                <p class="text-white text-lg font-bold italic">"Ammonia spike detected. Session terminated to prevent catabolism."</p>
                             </div>
                         </div>
                         <div class="flex items-center gap-5 p-8 bg-white/5 border border-white/10 rounded-3xl shadow-2xl transition-all hover:bg-white/10">
@@ -149,25 +121,23 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20"/></svg>
                             </div>
                             <div>
-                                <h4 class="font-black uppercase tracking-[0.2em] text-[10px] text-zinc-500 mb-2">Neuro-Recovery Sync</h4>
-                                <p class="text-white text-lg font-bold">"Ammonia spike detected. Session terminated to prevent catabolism."</p>
+                                <h4 class="font-black uppercase tracking-[0.2em] text-[10px] text-zinc-500 mb-2">Live Physiological Guidance</h4>
+                                <p class="text-white text-lg font-bold italic">"Biological recharge at 98%. Prepare for Set 4."</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Right Visual: Phone Mockup with User Screenshot -->
+                <!-- Right Visual: OS Image (No Phone Mockup) -->
                 <div class="lg:w-1/2 flex justify-center relative">
-                    <div class="phone-mockup relative z-10 transition-transform duration-700 hover:rotate-1">
-                        <div class="phone-notch"></div>
-                        <!-- Using image.png as the app dashboard screen -->
-                        <img src="image.png" alt="SOMA App Interface" class="phone-screen" onerror="this.src='https://via.placeholder.com/300x600?text=SOMA+OS'">
+                    <div class="os-image-container relative z-10 transition-transform duration-700 hover:scale-[1.02]">
+                        <img src="OS.png" alt="SOMA OS Interface" class="w-full h-auto block" onerror="this.src='https://via.placeholder.com/400x800?text=SOMA+OS+INTERFACE'">
                     </div>
-                    <!-- Floating Data Pill -->
-                    <div class="absolute -bottom-6 -left-10 md:-left-20 bg-red-600 text-white p-8 rounded-[2rem] shadow-2xl z-20 max-w-[280px] border border-red-500 hidden md:block">
+                    <!-- Floating Data Overlay -->
+                    <div class="absolute -bottom-6 -left-6 md:-left-12 bg-red-600 text-white p-8 rounded-[2rem] shadow-2xl z-20 max-w-[280px] border border-red-500 hidden md:block">
                         <div class="flex items-center gap-3 mb-4">
                             <div class="w-2.5 h-2.5 rounded-full bg-white animate-pulse"></div>
-                            <span class="text-[9px] font-black uppercase tracking-widest text-white/80">Molecular Lab Active</span>
+                            <span class="text-[9px] font-black uppercase tracking-widest text-white/80">Molecular Flux: Active</span>
                         </div>
                         <p class="text-sm font-bold leading-tight uppercase italic tracking-tight">"Glucose burn rate exceeding buffer. Fuel now."</p>
                     </div>
@@ -180,8 +150,8 @@
     <section id="science" class="py-32 bg-white">
         <div class="container mx-auto px-6">
             <div class="text-center mb-24">
-                <h2 class="text-5xl md:text-7xl font-black italic uppercase tracking-tighter mb-6">Clinical <br><span class="text-red-600">Bio-Sensing.</span></h2>
-                <p class="max-w-2xl mx-auto text-zinc-500 text-lg font-medium italic">Standard wearables look at your pulse. SOMA looks at your fuel.</p>
+                <h2 class="text-5xl md:text-7xl font-black italic uppercase tracking-tighter mb-6">Molecular <br><span class="text-red-600">Autoregulation.</span></h2>
+                <p class="max-w-2xl mx-auto text-zinc-500 text-lg font-medium italic text-zinc-500">Standard wearables react to stress. SOMA predicts it.</p>
             </div>
 
             <div class="grid lg:grid-cols-3 gap-12">
@@ -189,37 +159,36 @@
                     <div class="w-12 h-12 rounded-xl bg-red-600 flex items-center justify-center mb-8 shadow-lg shadow-red-600/20">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
                     </div>
-                    <h3 class="font-black uppercase tracking-widest text-xs mb-4">Ammonia Kill-Switch</h3>
-                    <p class="text-zinc-500 text-sm leading-relaxed font-medium">Detect the exact moment your body starts breaking down muscle protein for fuel. Nova stops catabolism before it starts.</p>
+                    <h3 class="font-black uppercase tracking-widest text-xs mb-4">Ammonia Guard</h3>
+                    <p class="text-zinc-500 text-sm leading-relaxed font-medium">Detect the exact moment your body begins burning muscle for fuel. SOMA terminates sessions to preserve lean mass.</p>
                 </div>
                 <div class="p-10 bg-zinc-50 border border-zinc-100 rounded-[3rem] hover:border-red-600/30 hover:shadow-xl transition-all">
                     <div class="w-12 h-12 rounded-xl bg-red-600 flex items-center justify-center mb-8 shadow-lg shadow-red-600/20">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg>
                     </div>
                     <h3 class="font-black uppercase tracking-widest text-xs mb-4">Glucose Velocity</h3>
-                    <p class="text-zinc-500 text-sm leading-relaxed font-medium">Know your exact energy burn rate in real-time. Predict 'The Wall' before you hit it and fuel with gram-level precision.</p>
+                    <p class="text-zinc-500 text-sm leading-relaxed font-medium">Measure real-time energy expenditure. SOMA predicts glycogen depletion 12 minutes before performance failure.</p>
                 </div>
                 <div class="p-10 bg-zinc-50 border border-zinc-100 rounded-[3rem] hover:border-red-600/30 hover:shadow-xl transition-all">
                     <div class="w-12 h-12 rounded-xl bg-red-600 flex items-center justify-center mb-8 shadow-lg shadow-red-600/20">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
                     </div>
-                    <h3 class="font-black uppercase tracking-widest text-xs mb-4">CNS Recharge</h3>
-                    <p class="text-zinc-500 text-sm leading-relaxed font-medium">Monitor Potassium re-polarization at the cellular level. Get the green light when your fibers are biologically ready for power.</p>
+                    <h3 class="font-black uppercase tracking-widest text-xs mb-4">CNS Readiness</h3>
+                    <p class="text-zinc-500 text-sm leading-relaxed font-medium">Monitor Potassium re-polarization at the cellular level. Know when your fibers are biologically ready for power.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Hardware Ecosystem (Tricep Patch Image) -->
+    <!-- Hardware Section (Tricep Patch) -->
     <section id="hardware" class="py-32 bg-zinc-50 border-y border-zinc-100 overflow-hidden">
         <div class="container mx-auto px-6">
             <div class="grid lg:grid-cols-2 gap-20 items-center">
                 <div class="relative flex justify-center">
                     <div class="absolute inset-0 bg-red-600 blur-[150px] opacity-10 scale-125"></div>
                     <div class="relative z-10 w-full max-w-md">
-                        <!-- Using image_3eb4e1.png for the hardware/patch render -->
                         <div class="aspect-square bg-white rounded-[4rem] p-4 shadow-2xl border border-zinc-100 overflow-hidden">
-                            <img src="image_3eb4e1.png" alt="SOMA Tricep Patch" class="w-full h-full object-cover rounded-[3rem]" onerror="this.src='https://via.placeholder.com/500x500?text=SOMA+PATCH'">
+                            <img src="image_3eb4e1.png" alt="SOMA Tricep Patch" class="w-full h-full object-cover rounded-[3rem]" onerror="this.src='https://via.placeholder.com/500x500?text=TRICEP+PATCH'">
                         </div>
                     </div>
                 </div>
@@ -230,16 +199,16 @@
                     </div>
                     <h2 class="text-5xl md:text-7xl font-black italic uppercase tracking-tighter mb-8 leading-none">The <br><span class="text-red-600 underline decoration-8 underline-offset-8">Tricep Patch.</span></h2>
                     <p class="text-zinc-500 text-xl font-medium leading-relaxed mb-10 italic">
-                        Why the tricep? It offers the highest sampling consistency for continuous bio-flux during dynamic movement. 
+                        The tricep is the optimal site for consistent sampling during dynamic movement. Direct molecular feed, zero interruption.
                     </p>
                     <div class="space-y-6">
                         <div class="flex gap-4 items-center p-6 bg-white rounded-3xl border border-zinc-200 shadow-sm transition-all hover:border-red-600/30">
                             <div class="w-4 h-4 rounded-full bg-zinc-200 border-2 border-zinc-300"></div>
-                            <p class="text-[11px] font-black uppercase tracking-widest text-zinc-900">White Ring: <span class="text-zinc-400 font-medium">Equilibrium</span></p>
+                            <p class="text-[11px] font-black uppercase tracking-widest text-zinc-900">Steady State: <span class="text-zinc-400 font-medium">Biological Equilibrium</span></p>
                         </div>
                         <div class="flex gap-4 items-center p-6 bg-white rounded-3xl border border-red-100 shadow-md transition-all hover:shadow-red-200">
                             <div class="w-4 h-4 rounded-full bg-red-600 animate-pulse shadow-[0_0_15px_rgba(225,29,72,0.8)]"></div>
-                            <p class="text-[11px] font-black uppercase tracking-widest text-red-600">Red Ring: <span class="text-red-400 italic font-medium tracking-normal lowercase">Active Metabolic Spike</span></p>
+                            <p class="text-[11px] font-black uppercase tracking-widest text-red-600">Active Alert: <span class="text-red-400 italic font-medium tracking-normal lowercase">Metabolic Spike Detected</span></p>
                         </div>
                     </div>
                 </div>
@@ -247,11 +216,12 @@
         </div>
     </section>
 
-    <!-- Final Waitlist -->
+    <!-- Waitlist -->
     <section id="waitlist" class="py-48 bg-zinc-900 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-1/2 h-1/2 bg-red-600 blur-[180px] opacity-10"></div>
         <div class="container mx-auto px-6 max-w-4xl relative z-10 text-center">
             <h2 class="text-7xl md:text-[11rem] font-black italic uppercase mb-12 tracking-tighter text-white leading-none">JOIN THE <br><span class="text-red-600">ALPHA.</span></h2>
-            <p class="text-zinc-400 text-xl md:text-2xl mb-20 font-medium">Alpha Phase: 500 performers only. Secure your molecular rank.</p>
+            <p class="text-zinc-400 text-xl md:text-2xl mb-20 font-medium">Limited to 500 elite testers for Q4 2026. Secure your molecular rank.</p>
             
             <div id="form-container" class="bg-white p-10 md:p-20 rounded-[4rem] shadow-2xl text-left border border-zinc-100">
                 <form id="signup-form" class="space-y-8">
@@ -273,41 +243,41 @@
 
     <footer class="py-24 text-center bg-white border-t border-zinc-100">
         <div class="flex items-center justify-center gap-4 mb-8">
-            <div class="w-10 h-10 rounded-lg overflow-hidden border border-zinc-100">
-                <img src="image.png" alt="SOMA" class="w-full h-full object-cover" onerror="this.style.display='none'">
+            <div class="w-12 h-12 rounded-lg overflow-hidden border border-zinc-100 bg-zinc-50 flex items-center justify-center">
+                <img src="image.png" alt="SOMA Logo" class="w-full h-full object-contain" onerror="this.style.display='none'">
             </div>
             <span class="text-4xl font-black soma-logo-text uppercase italic tracking-tighter">SOMA<span class="text-red-600 font-normal">.</span></span>
         </div>
-        <p class="text-zinc-400 text-[9px] font-black uppercase tracking-[0.5em] mb-12">The Body, Decoded. Powered by SOMA Bio-Labs.</p>
+        <p class="text-zinc-400 text-[9px] font-black uppercase tracking-[0.5em] mb-12 italic">The Body, Decoded. Powered by SOMA Bio-Labs.</p>
         <div class="text-[10px] font-bold uppercase tracking-[0.5em] text-zinc-300">© 2026 SOMA Technologies Group. All Rights Reserved.</div>
     </footer>
 
     <script>
-        window.onload = function() {
-            document.getElementById('signup-form').addEventListener('submit', async (e) => {
-                e.preventDefault();
-                const btn = document.getElementById('submit-btn');
-                btn.innerHTML = "SYNCING BIOLOGY...";
-                btn.disabled = true;
+        // Form Logic
+        document.getElementById('signup-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = document.getElementById('submit-btn');
+            btn.innerHTML = "SYNCING BIOLOGY...";
+            btn.disabled = true;
 
-                const name = document.getElementById('form-name').value;
-                const email = document.getElementById('form-email').value;
-                const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyJqQH9LCR4Mhnbn20HZKg0fVOaIUCchKQhpvfvsTHSoGUZgK85INhE6P0YzNfSE2PCZw/exec";
+            const name = document.getElementById('form-name').value;
+            const email = document.getElementById('form-email').value;
+            const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyJqQH9LCR4Mhnbn20HZKg0fVOaIUCchKQhpvfvsTHSoGUZgK85INhE6P0YzNfSE2PCZw/exec";
 
-                try {
-                    await fetch(SCRIPT_URL, { 
-                        method: 'POST', 
-                        mode: 'no-cors', 
-                        body: JSON.stringify({ name: name.toUpperCase(), email: email.toUpperCase(), timestamp: new Date().toISOString() }) 
-                    });
-                    document.getElementById('form-container').innerHTML = `<div class="py-10 text-center"><div class="w-24 h-24 text-red-600 mx-auto border-4 border-red-600 rounded-full flex items-center justify-center font-bold text-4xl mb-8 animate-bounce">✓</div><h3 class="text-4xl font-black uppercase italic mb-4 text-zinc-900 tracking-tighter">ACCESS GRANTED.</h3><p class="text-zinc-500 text-lg font-medium italic">SOMA verification code sent to secure inbox.</p></div>`;
-                } catch (error) { 
-                    btn.innerHTML = "CONNECTION ERROR. TRY AGAIN."; 
-                    btn.disabled = false; 
-                }
-            });
-        };
+            try {
+                await fetch(SCRIPT_URL, { 
+                    method: 'POST', 
+                    mode: 'no-cors', 
+                    body: JSON.stringify({ name: name.toUpperCase(), email: email.toUpperCase(), timestamp: new Date().toISOString() }) 
+                });
+                document.getElementById('form-container').innerHTML = `<div class="py-10 text-center"><div class="w-24 h-24 text-red-600 mx-auto border-4 border-red-600 rounded-full flex items-center justify-center font-bold text-4xl mb-8 animate-bounce">✓</div><h3 class="text-4xl font-black uppercase italic mb-4 text-zinc-900 tracking-tighter">ACCESS GRANTED.</h3><p class="text-zinc-500 text-lg font-medium italic">SOMA verification code sent to secure inbox.</p></div>`;
+            } catch (error) { 
+                btn.innerHTML = "CONNECTION ERROR. TRY AGAIN."; 
+                btn.disabled = false; 
+            }
+        });
 
+        // Navbar Scroll Logic
         window.addEventListener('scroll', () => {
             const nav = document.getElementById('navbar');
             if (window.scrollY > 50) { 
